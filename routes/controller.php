@@ -1,5 +1,5 @@
 <?php
-  require_once('../includes/config.php');
+  require_once('../configs/config.php');
 
   if(!empty($_GET['active_module'])){
     session_start();
