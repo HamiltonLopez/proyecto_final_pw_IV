@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  body {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    max-height: 100%;
+    background-color: black;
+    background-image: url('../../../img/promocion.gif'); /* Cambia "ruta-de-la-imagen.jpg" por la ruta de tu imagen de fondo */
+    background-repeat: no-repeat; /* Opcional: para evitar que la imagen se repita */
+    background-size: contain; /* Opcional: para ajustar el tamaño de la imagen al contenedor */
+   
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+  .reloj img{
+    box-shadow: rgba(140, 140, 140, 0.502) 5px 5px 15px;
+  }
+  img {
+    max-width: 100%;
+  }
+  div[class^="video"] {
+    padding-top: 75%;
+  }
+  div[class^="info"] {
+    color: white;
+    padding-top: 85%;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  div[class^="reloj"] {
+    padding-top: 10%;
+  }
+  div[class^="-info"] {
+    color: white;
+    padding-top: 15%;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
