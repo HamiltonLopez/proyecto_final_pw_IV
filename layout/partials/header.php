@@ -36,8 +36,8 @@
   <div class="container">
       <header>
         <div class="head-row">
-          <nav id="navbar" class="navbar navbar-expand-lg">
-            <div class="container-fluid d-flex justify-content-between">
+          <nav id="navbar" class="navbar navbar-expand-lg container">
+            <div class="container-fluid d-flex justify-content-between row">
             
               <img class="navbar-brand col-3" src="img/logo.png" alt="">
               <button
@@ -52,27 +52,37 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
 
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item col-3">
+              <div class="collapse navbar-collapse col-9" id="navbarNav">
+                <ul class="navbar-nav row col-12">
+                  <li class="nav-item col">
                     <a class="nav-link<?php echo $menu['active_home']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=home'?>" href="#">Home</a>
                   </li>
-                  <li class="nav-item col-3">
+                  <li class="nav-item col">
                     <a class="nav-link<?php echo $menu['active_caballero']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=caballero'?>" href="#">Caballero</a>
                   </li>
-                  <li class="nav-item col-3">
+                  <li class="nav-item col">
                     <a class="nav-link<?php echo $menu['active_dama']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=dama'?>" href="#">Damas</a>
                   </li>
-                  <li class="nav-item col-3">
+                  <li class="nav-item col">
                     <a class="nav-link<?php echo $menu['active_producto']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=producto'?>" href="#">Productos</a>
                   </li>
-                  <li class="nav-item col-3">
-                    <a class="nav-link<?php echo $menu['active_about']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=about'?>" href="#">About us</a>
+                  <li class="nav-item col">
+                    <a class="nav-link<?php echo $menu['active_about']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=about'?>" href="#">Nosotros</a>
                   </li>
-                  <li class="nav-item col-3">
-                    <a class="nav-link<?php echo $menu['active_login']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=login'?>" href="#">Login</a>
+                 
+                  <li class="nav-item col">
+                    <a class="nav-link<?php echo $menu['active_login']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=login'?>" href="#">Login <i class="bi bi-person-dash"></i></a>
+                    
                   </li>
+                  <li class="nav-item col">
+                    <a class="nav-link<?php echo $menu['active_login']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=login'?>" href="#"><i class="bi bi-cart3"></i></a>
+                    
+                  </li>
+                  
+
+                 
                 </ul>
+                
               </div>
             </div>
           </nav>

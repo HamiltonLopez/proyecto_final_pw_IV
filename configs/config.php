@@ -20,7 +20,7 @@
         'home' => 'Home!',
         'caballero' => 'Caballero!',
         'dama' => 'Dama!',
-        'producto' => 'producto!',
+        'producto' => 'Producto!',
         'about' => 'About!',
         'login' => 'Login!',
         'module5' => 'Module 5!',
