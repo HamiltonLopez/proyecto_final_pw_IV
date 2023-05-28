@@ -52,6 +52,7 @@ header {
   .navbar-nav li a {
     position: relative;
   }
+
   
   .navbar-nav li a::after {
     content: "";
@@ -67,7 +68,7 @@ header {
   }
   #navbar{
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.39);
+    background-color: rgb(0, 0, 0);
 }
 .active{
   color: rgb(255, 255, 255);
