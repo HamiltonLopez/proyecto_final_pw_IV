@@ -45,7 +45,7 @@ class Carrito {
 
     public function removeProduct($idReloj) {
 		try {
-			$sql ="DELETE FROM {$this->table_name} WHERE idReloj = {$idReloj}";
+			$sql ="DELETE $idReloj, $cantidadRelojes FROM {$this->table_name} WHERE idReloj = {$idReloj}";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->bindValue(':idReloj', $idReloj,PDO::PARAM_INT);
 			$stmt->execute();
