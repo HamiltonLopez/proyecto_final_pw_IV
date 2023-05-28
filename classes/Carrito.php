@@ -3,10 +3,10 @@ class Carrito {
 
     /*
 
-    idCarrito INT PK AI NOT NULL,
-    idPersona INT FK NOT NULL,
-    idReloj INT NOT NULL,
-    cantidadRelojes TINYINT NOT NULL
+        idCarrito INT PK AI NOT NULL,
+        idPersona INT FK NOT NULL,
+        idReloj INT FK NOT NULL,
+        cantidadRelojes TINYINT NOT NULL
 
     */
 
