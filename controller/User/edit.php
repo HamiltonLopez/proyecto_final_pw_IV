@@ -36,7 +36,7 @@
 
     <div class="row align-items-center">
       <div class="col-12 text-center">
-        <span class="fw-bolder fs-4">Datos del usuario.</span>
+        <span class="fw-bolder fs-4">Datos del usuario</span>
       </div>
     </div>
 
@@ -45,41 +45,29 @@
     </div>
 
     <form class="row g-3 align-items-center" action="<?php echo $BASE_ROOT_URL_PATH;?>includes/update.php" method="post">
-      <input type="hidden" name="id" value="<?php echo $datos['id'];?>">
+      <input type="hidden" name="id" value="<?php echo $datos['idUser'];?>">
       <div class="px-4 py-2 row">
-        <label for="name" class="col-6 col-form-label fw-bolder">Nombre</label>
+        <label for="name" class="col-6 col-form-label fw-bolder">UserName</label>
         <div class="col-6">
-          <input type="text" class="form-control" name="name" value="<?php echo $datos['name'];?>" placeholder="Ingrese nombre" required>
+          <input type="text" class="form-control" name="userName" value="<?php echo $datos['userName'];?>" readonly>
         </div>
       </div>
       <div class="px-4 py-2 row">
-        <label for="name" class="col-6 col-form-label fw-bolder">Apellido</label>
+        <label for="name" class="col-6 col-form-label fw-bolder">Password</label>
         <div class="col-6">
-          <input type="text" class="form-control" name="lastname" value="<?php echo $datos['lastname'];?>" placeholder="Ingrese apellido">
+          <input type="text" class="form-control" name="userPassword" value="<?php echo $datos['userPassword'];?>" require>
         </div>
       </div>
       <div class="px-4 py-2 row">
-        <label for="name" class="col-6 col-form-label fw-bolder">Dirección</label>
+        <label for="name" class="col-6 col-form-label fw-bolder">Password</label>
         <div class="col-6">
-          <input type="text" class="form-control" name="address" value="<?php echo $datos['address'];?>" placeholder="Ingrese dirección">
+          <input type="text" class="form-control" name="userPassword" value="<?php echo $datos['userPassword'];?>" require>
         </div>
       </div>
       <div class="px-4 py-2 row">
-        <label for="name" class="col-6 col-form-label fw-bolder">Teléfono</label>
+        <label for="name" class="col-6 col-form-label fw-bolder">Email</label>
         <div class="col-6">
-          <input type="text" class="form-control" name="phone" value="<?php echo $datos['phone'];?>" placeholder="Ingrese teléfono">
-        </div>
-      </div>
-      <div class="px-4 py-2 row">
-        <label for="name" class="col-6 col-form-label fw-bolder">Correo electrónico</label>
-        <div class="col-6">
-          <input type="email" class="form-control" name="email" value="<?php echo $datos['email'];?>" placeholder="Ingrese correo electrónico">
-        </div>
-      </div>
-      <div class="px-4 py-2 row">
-        <label for="name" class="col-6 col-form-label fw-bolder">Fecha de nacimiento</label>
-        <div class="col-6">
-          <input type="date" class="form-control" name="birthday" value="<?php echo $dateStr;?>" placeholder="Ingrese fecha de nacimiento">
+          <input type="text" class="form-control" name="userEmail" value="<?php echo $datos['userEmail'];?>" require>
         </div>
       </div>
       <div class="px-4 py-2 row">
