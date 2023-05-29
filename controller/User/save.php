@@ -11,7 +11,7 @@
 
     for($i = 0; $i < $num_rows; $i++){   
                   
-      $idPersona =  $_POST['idUser'][$i];
+      $idUser =  $_POST['idUser'][$i];
       $userName =  $_POST['userName'][$i];
       $userPassword =  $_POST['userPassword'][$i];
       $userEmail =  $_POST['userEmail'][$i];
