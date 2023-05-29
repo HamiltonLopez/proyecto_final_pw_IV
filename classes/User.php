@@ -23,15 +23,16 @@ class User {
 		$this->pdo = null; //Se destruye la conexíon a la base de datos creada en el constructor
 	}
 
-    public function createUser($idUser, $userName, $userPassword, $userEmail) {
+	//Quitar el idUsuario de este método
+    public function createUser($userName, $userPassword, $userEmail) {
 		
 		try {
-				$sql = 'INSERT INTO `'.$this->table_name.'` SET `idUser` = :idUser, `userName` = :userName, `userPassword` = :userPassword, `userEmail` = :userEmail;';
+				$sql = 'INSERT INTO `'.$this->table_name.'` SET `userName` = :userName, `userPassword` = :userPassword, `userEmail` = :userEmail;';
 
+				$passwordEncrypt = sha1($userPassword);
 				$stmt = $this->pdo->prepare($sql);
-				$stmt->bindValue(':idUser', $idUser,PDO::PARAM_STR);
 				$stmt->bindValue(':userName', $userName,PDO::PARAM_STR);
-				$stmt->bindValue(':userPassword', $userPassword,PDO::PARAM_INT);
+				$stmt->bindValue(':userPassword', $passwordEncrypt,PDO::PARAM_INT);
 				$stmt->bindValue(':userEmail', $userEmail,PDO::PARAM_STR);
 
 				$stmt->execute();
@@ -95,11 +96,12 @@ class User {
     public function updateUser($idUser, $userPassword) {
 		
         try {
-                $sql = "UPDATE {$this->table_name} SET userPassword = {$userPassword} WHERE idUser = {$idUser}";
+
+				$passwordEncrypt = sha1($userPassword);
+                $sql = "UPDATE {$this->table_name} SET `userPassword` = :userPassword WHERE `idUser` = :idUser";
     
                 $stmt = $this->pdo->prepare($sql);
-                $stmt->bindValue(':userPassword', $userPassword,PDO::PARAM_STR);
-    
+                $stmt->bindValue(':userPassword', $passwordEncrypt,PDO::PARAM_STR);
                 $stmt->bindValue(':idUser', $idUser,PDO::PARAM_INT);
                 $stmt->execute();
         }

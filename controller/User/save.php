@@ -7,16 +7,20 @@
     
     $user = new User();
 
-    $num_rows = count($_POST['userName']);
+    if(!empty($_POST['userName']) && $_POST['userPassword'] && $_POST['confirmPassword'] && $_POST['userEmail']){
 
-    for($i = 0; $i < $num_rows; $i++){   
-                  
-      $idUser =  $_POST['idUser'][$i];
-      $userName =  $_POST['userName'][$i];
-      $userPassword =  $_POST['userPassword'][$i];
-      $userEmail =  $_POST['userEmail'][$i];
+      $password = $_POST['userPassword'];
+      $confirmPassword = $_POST['confirmPassword'];
 
-      $user->save( $idUser, $userName, $userPassword, $userEmail);
+      if ($password == $confirmPassword) {
+
+        $user->save($_POST['userName'], $password, $_POST['userEmail']);
+
+      }else {
+        echo ("Las contraseñas ingresadas no son iguales, por favor verificar de nuevo.");
+      }
+    }else{
+      echo ("Por favor, completar todos los campos");
     }
   }
 
