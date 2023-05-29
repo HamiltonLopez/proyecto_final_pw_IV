@@ -77,6 +77,22 @@ class Reloj {
 		return $result;
 	}
 
+	public function getByType($tipoReloj){
+		$result = array();
+
+		try {
+			$sql = " SELECT idReloj, nombreReloj, modeloReloj, tipoReloj FROM {$this->table_name} WHERE tipoReloj = {$tipoReloj}";
+			$stmt = $this->pdo->prepare($sql);
+			$stmt->execute();
+			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $e) {
+			throw new Exception("Error trying to get records from {$this->table_name} table: ".$e->getMessage());
+		}
+
+		return $result;
+	}
+
 	public function delete($id) {
 		try {
 			$sql ="DELETE FROM {$this->table_name} WHERE idReloj = {$id}";
