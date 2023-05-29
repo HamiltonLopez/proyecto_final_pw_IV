@@ -1,15 +1,11 @@
 <?php
     require_once ('config.php');
     require_once ($BASE_ROOT_FOLDER_PATH.'includes/database.php');
-    require($BASE_ROOT_FOLDER_PATH.'classes/Persona.php');
-    $id = $_GET['id'];
+    require($BASE_ROOT_FOLDER_PATH.'classes/User.php');
+    $idUser = $_GET['idUser'];
 
-    $persona = new Persona();
-    $datos = $persona->getById($id);
-
-    //$dateStr = strlen($datos['birthday'])>=10?explode('-',substr($datos['birthday'],0,10)):['0000','00','00'];
-    //$date = $dateStr[2].'/'.$dateStr[1].'/'.$dateStr[0];
-    $dateStr = strlen($datos['birthday'])>=10?substr($datos['birthday'],0,10):'';
+    $user = new User();
+    $datos = $user->getById($idUser);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +26,7 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-12 text-center">
-        <span class="fw-bolder fs-3">Edición y guardado de datos de forma dinámica con Javascript y PHP</span>
+        <span class="fw-bolder fs-3">Edición del usuario</span>
       </div>
     </div>
     
@@ -40,7 +36,7 @@
 
     <div class="row align-items-center">
       <div class="col-12 text-center">
-        <span class="fw-bolder fs-4">Datos de la persona.</span>
+        <span class="fw-bolder fs-4">Datos del usuario.</span>
       </div>
     </div>
 

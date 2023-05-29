@@ -4,7 +4,7 @@ class Carrito {
     /*
 
         idCarrito INT PK AI NOT NULL,
-        idPersona INT FK NOT NULL,
+        idUser INT FK NOT NULL,
         idReloj INT FK NOT NULL,
         cantidadRelojes TINYINT NOT NULL
 
@@ -25,14 +25,13 @@ class Carrito {
 		$this->pdo = null; //Se destruye la conexíon a la base de datos creada en el constructor
 	}
 
-    //Falta averiguar dónde agregar el idCarrito y de qué manera validar que los productos se agreguen al carrito correspondiente
-    public function addProduct($idPersona, $idReloj, $cantidadRelojes) {
+    public function addProduct($idUser, $idReloj, $cantidadRelojes) {
 		
 		try {
-				$sql = 'INSERT INTO `'.$this->table_name.'` SET `idPersona` = :idPersona, `idReloj` = :idReloj, `cantidadRelojes` = :cantidadRelojes;';
+				$sql = 'INSERT INTO `'.$this->table_name.'` SET `idUser` = :idUser, `idReloj` = :idReloj, `cantidadRelojes` = :cantidadRelojes;';
 
 				$stmt = $this->pdo->prepare($sql);
-				$stmt->bindValue(':idPersona', $idPersona,PDO::PARAM_STR);
+				$stmt->bindValue(':idUser', $idUser,PDO::PARAM_STR);
 				$stmt->bindValue(':idReloj', $idReloj,PDO::PARAM_INT);
 				$stmt->bindValue(':cantidadRelojes', $cantidadRelojes,PDO::PARAM_STR);
 
@@ -43,49 +42,67 @@ class Carrito {
 		}
 	}
 
-    public function removeProduct($idReloj) {
+    public function getProductByIdUser($idUser) {		
+		
+		$result = array();
+
 		try {
-			$sql ="DELETE $idReloj, $cantidadRelojes FROM {$this->table_name} WHERE idReloj = {$idReloj}";
+			$sql = "SELECT idCarrito, idUser, idReloj, cantidadRelojes FROM {$this->table_name} WHERE idUser = {$idUser}";
 			$stmt = $this->pdo->prepare($sql);
-			$stmt->bindValue(':idReloj', $idReloj,PDO::PARAM_INT);
+            $stmt->bindValue(':idUser', $idUser,PDO::PARAM_INT);
+			$stmt->execute();
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $e) {
+			throw new Exception("Error trying to get records from {$this->table_name} table: ".$e->getMessage());
+		}
+
+		return $result;
+	}
+
+    public function removeProduct($idCarrito) {
+		try {
+			$sql ="DELETE FROM {$this->table_name} WHERE idCarrito = {$idCarrito}";
+			$stmt = $this->pdo->prepare($sql);
+			$stmt->bindValue(':idCarrito', $idCarrito,PDO::PARAM_INT);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $result;
 		}
 		catch(PDOException $e) {
-			throw new Exception("Error trying to delete record (id): {$idReloj} from {$this->table_name} table. ".$e->getMessage());
+			throw new Exception("Error trying to delete record (id): {$idCarrito} from {$this->table_name} table. ".$e->getMessage());
 		}
 
 	}
 
-    public function updateCountProduct($idReloj, $cantidadRelojes) {
+    public function updateCountProduct($idCarrito, $cantidadRelojes) {
 		
         try {
-                $sql = "UPDATE {$this->table_name} SET cantidadRelojes = {$cantidadRelojes} WHERE idReloj = {$idReloj}";
+                $sql = "UPDATE {$this->table_name} SET cantidadRelojes = {$cantidadRelojes} WHERE idCarrito = {$idCarrito}";
     
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->bindValue(':cantidadRelojes', $cantidadRelojes,PDO::PARAM_STR);
     
-                $stmt->bindValue(':idReloj', $idReloj,PDO::PARAM_INT);
+                $stmt->bindValue(':idCarrito', $idCarrito,PDO::PARAM_INT);
                 $stmt->execute();
             }
             catch(PDOException $e) {
-                throw new Exception("Error trying to update record (id): {$idReloj} on {$this->table_name} table. ".$e->getMessage());
+                throw new Exception("Error trying to update record (id): {$idCarrito} on {$this->table_name} table. ".$e->getMessage());
               }
         }
     }
 
-    public function clearCar($idCarrito) {
+    public function clearCar($idUser) {
         
         try {
-            $sql = "DELETE $idReloj, $cantidadRelojes FROM {$this->table_name} WHERE idCarrito = {$idCarrito}";
+            $sql = "DELETE FROM {$this->table_name} WHERE idUser = {$idUser}";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindValue(':idCarrito', $idCarrito,PDO::PARAM_INT);
+            $stmt->bindValue(':idUser', $idUser,PDO::PARAM_INT);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         catch(PDOException $e) {
-            throw new Exception("Error trying to update record (id): {$idCarrito} on {$this->table_name} table. ".$e->getMessage());
+            throw new Exception("Error trying to update record (id): {$idUser} on {$this->table_name} table. ".$e->getMessage());
           }
     }
 }
