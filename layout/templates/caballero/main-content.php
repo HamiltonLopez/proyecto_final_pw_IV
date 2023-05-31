@@ -24,13 +24,14 @@ $registros = $reloj->getAll(); ?>
       <div class="card">
         <img src="<?php echo $imagen; ?>" class="card-img-top" alt="..." />
         <div class="card-body">
-          <h5 class="card-title"><?php echo $row['name']; ?></h5>
+          <h5 class="card-title"><?php echo $row['nombreReloj']; ?></h5>
+
           <div class="text">
           <p class="card-text">
-            Esta es una tarjeta más larga con texto de apoyo a continuación como
-            introducción natural a contenido adicional. Este contenido es un
-            poco más largo.
+          Modelo :<?php echo $row['modeloReloj']; ?>
           </p>
+          <p>Tipo : <?php echo $row['tipoReloj']; ?></p>
+          <p>$ <?php echo $row['precioReloj']; ?></p>
           </div>
           <a href="#" class="btn btn-primary d-flex justify-content-center ">Añadir   <i class="bi bi-cart3"></i></a>
          

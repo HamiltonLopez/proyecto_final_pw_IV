@@ -98,18 +98,18 @@
             ?>
                 <tr>
                   <td><?php echo ($index + 1)?></td>
-                  <td><?php echo $fila['name']?></td>
-                  <td><?php echo $fila['id']?></td>
-                  <td><?php echo $fila['name']?></td>
-                  <td><?php echo $fila['name']?></td>
+                  <td><?php echo $fila['nombreReloj']?></td>
+                  <td><?php echo $fila['idReloj']?></td>
+                  <td><?php echo $fila['modeloReloj']?></td>
+                  <td><?php echo $fila['tipoReloj']?></td>
                
-                  <td><?php echo $fila['name']?></td>
+                  <td><?php echo $fila['precioReloj']?></td>
 
                   <td>
                     
                       
-                  <input class ="button-edit" type="button" value="Editar" onClick="editar_registro(<?php echo $fila['id']; ?>);">
-                  <input class ="button-delete" type="button" value="Borrar" onClick="borrar_registro(<?php echo $fila['id']; ?>);">
+                  <input class ="button-edit" type="button" value="Editar" onClick="editar_registro(<?php echo $fila['idReloj']; ?>);">
+                  <input class ="button-delete" type="button" value="Borrar" onClick="borrar_registro(<?php echo $fila['idReloj']; ?>);">
                 </td>
                 </tr>
             <?php
