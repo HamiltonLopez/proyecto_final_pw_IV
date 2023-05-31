@@ -1,7 +1,7 @@
 <?php
     require_once ('config.php');
     require_once ($BASE_ROOT_FOLDER_PATH.'includes/database.php');
-    require($BASE_ROOT_FOLDER_PATH.'classes/Persona.php');
+    require($BASE_ROOT_FOLDER_PATH.'classes/Reloj.php');
     $id = $_GET['idReloj'];
 
     $reloj = new Reloj();
@@ -62,9 +62,9 @@
       <div class="px-4 py-2 row">
         <label for="name" class="col-6 col-form-label fw-bolder">Tipo</label>
         <div class="col-6">
-          <select name="" id="">
-            <option value="Masculino">Masculino</option>
-            <option value="Femenino">Femenino</option>
+          <select name="idTipoReloj[]" id="">
+            <option value="1">Masculino</option>
+            <option value="2">Femenino</option>
           </select>
         </div>
       </div>

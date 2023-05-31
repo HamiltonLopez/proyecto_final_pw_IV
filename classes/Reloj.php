@@ -24,16 +24,16 @@ class Reloj {
 		$this->pdo = null; //Se destruye la conexíon a la base de datos creada en el constructor
 	}
 
-	public function save( $nombreReloj, $modeloReloj, $idReloj, $tipoReloj, $precioReloj) {
+	public function save( $nombreReloj, $modeloReloj, $idReloj, $idTipoReloj = 1, $precioReloj) {
 		
 		try {
-				$sql = "INSERT INTO {$this->table_name} VALUES ({$nombreReloj}, {$modeloReloj}, {$idReloj}, {$tipoReloj}, {$precioReloj});";
+				$sql = "INSERT INTO {$this->table_name} VALUES ({$nombreReloj}, {$modeloReloj}, {$idReloj}, {$idTipoReloj}, {$precioReloj});";
 
 				$stmt = $this->pdo->prepare($sql);
 				$stmt->bindValue(':nombreReloj', $nombreReloj,PDO::PARAM_STR);
 				$stmt->bindValue(':modeloReloj', $modeloReloj,PDO::PARAM_STR);
 				$stmt->bindValue(':idReloj', $idReloj,PDO::PARAM_INT);
-				$stmt->bindValue(':tipoReloj', $tipoReloj,PDO::PARAM_STR);
+				$stmt->bindValue(':idTipoReloj', $idTipoReloj,PDO::PARAM_STR);
 				$stmt->bindValue(':precioReloj', $precioReloj,PDO::PARAM_DOUBLE);
 
 				$stmt->execute();
@@ -49,7 +49,7 @@ class Reloj {
 		$orderBy = $orderByDesc?'DESC':'ASC';
 
 		try {
-			$sql = "SELECT idReloj, nombreReloj, modeloReloj, tipoReloj, precioReloj FROM {$this->table_name} ORDER BY {$orderBy}";
+			$sql = "SELECT idReloj, nombreReloj, modeloReloj, idTipoReloj, precioReloj FROM {$this->table_name} ORDER BY {$orderBy}";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -66,7 +66,7 @@ class Reloj {
 		$result = array();
 
 		try {
-			$sql = "SELECT idReloj, nombreReloj, modeloReloj, tipoReloj, precioReloj FROM {$this->table_name} WHERE idReloj = {$id}";
+			$sql = "SELECT idReloj, nombreReloj, modeloReloj, idTipoReloj, precioReloj FROM {$this->table_name} WHERE idReloj = {$id}";
 			$stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':id', $id,PDO::PARAM_INT);
 			$stmt->execute();
@@ -79,11 +79,11 @@ class Reloj {
 		return $result;
 	}
 
-	public function getByType($tipoReloj){
+	public function getByType($idTipoReloj){
 		$result = array();
 
 		try {
-			$sql = " SELECT idReloj, nombreReloj, modeloReloj, tipoReloj, precioReloj FROM {$this->table_name} WHERE tipoReloj = {$tipoReloj}";
+			$sql = " SELECT idReloj, nombreReloj, modeloReloj, idTipoReloj, precioReloj FROM {$this->table_name} WHERE idTipoReloj = {$idTipoReloj}";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -110,15 +110,15 @@ class Reloj {
 
 	}
 
-  public function update( $idReloj, $nombreReloj, $modeloReloj, $tipoReloj, $precioReloj) {
+  public function update( $idReloj, $nombreReloj, $modeloReloj, $idTipoReloj, $precioReloj) {
 		
     try {
-			$sql = "UPDATE {$this->table_name} SET nombreReloj = {$nombreReloj}, modeloReloj = {$modeloReloj}, tipoReloj ={$tipoReloj}, precioReloj = {$precioReloj} WHERE idReloj = {$idReloj}";
+			$sql = "UPDATE {$this->table_name} SET nombreReloj = {$nombreReloj}, modeloReloj = {$modeloReloj}, idTipoReloj ={$idTipoReloj}, precioReloj = {$precioReloj} WHERE idReloj = {$idReloj}";
 
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->bindValue(':nombreReloj', $nombreReloj,PDO::PARAM_STR);
 			$stmt->bindValue(':modeloReloj', $modeloReloj,PDO::PARAM_STR);
-			$stmt->bindValue(':tipoReloj', $tipoReloj,PDO::PARAM_STR);
+			$stmt->bindValue(':idTipoReloj', $idTipoReloj,PDO::PARAM_STR);
 			$stmt->bindValue(':precioReloj', $precioReloj,PDO::PARAM_DOUBLE);
 
             $stmt->bindValue(':id', $id,PDO::PARAM_INT);

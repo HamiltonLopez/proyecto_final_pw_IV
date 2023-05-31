@@ -14,10 +14,10 @@
       $ideReloj = $_POST['idReloj'][$i];
       $nombreReloj =  $_POST['nombreReloj'][$i];
       $modeloReloj =  $_POST['modeloReloj'][$i];
-      $tipoReloj =  $_POST['tipoReloj'][$i];
+      $idTipoReloj =  $_POST['idTipoReloj'][$i];
       $precioReloj =  $_POST['precioReloj'][$i];
 
-      $reloj->save( $ideReloj, $nombreReloj, $modeloeReloj, $tipoReloj, $precioReloj);
+      $reloj->save( $ideReloj, $nombreReloj, $modeloeReloj, $idTipoReloj, $precioReloj);
     }
   }
 
