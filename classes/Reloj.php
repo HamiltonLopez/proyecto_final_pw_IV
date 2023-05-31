@@ -3,10 +3,10 @@ class Reloj {
 
 	/*
 		idReloj - identificador [int(15),PK,AI, NOT NULL]
-		nombreReloj - [varchar(50),NOT NULL]
-		modeloReloj - [varchar(50),NOT NULL]
-		tipoReloj - [varchar(10),NULL]
+		nombreReloj - [varchar(50), NOT NULL]
+		modeloReloj - [varchar(50), NOT NULL]
 		precio - double
+		idTipoReloj - FK [int(15), NOT NULL]
 	*/
 
 	private $pdo;
