@@ -60,6 +60,29 @@ class User {
 		return $result;
 	}
 
+	function validateCredential($userEmail, $userPassword){
+
+		$result = array();
+
+		try {
+			$sql = " SELECT * FROM {$this->table_name} ";
+      $sql .= ' WHERE userEmail = :userEmail AND userPassword = :userPassword';
+			$stmt = $this->pdo->prepare($sql);
+
+			$encryptedPassword = sha1($userPassword);
+      $stmt->bindValue(':userEmail', $userEmail,PDO::PARAM_STR);
+			$stmt->bindValue(':userPassword', $encryptedPassword,PDO::PARAM_STR);
+			$stmt->execute();
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $e) {
+			throw new Exception("Error trying to get records from {$this->table_name} table: ".$e->getMessage());
+		}
+
+		return $stmt->rowCount()>0?$result:null;
+
+	}
+
     public function getById($idUser) {		
 		
 		$result = array();
