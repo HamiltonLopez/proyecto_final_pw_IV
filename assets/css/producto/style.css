@@ -1,3 +1,61 @@
-h1 {
-    padding-top: 10%;
+#edit-table {
+    background-color: rgba(161, 158, 158, 0.65);
+    color: black;
 }
+#edit-table td,th {
+    text-align: center;
+}
+#edit-table th {
+    background-color:rgb(255, 187, 0);
+}
+
+#main-content{
+    background-color: rgba(128, 128, 128, 0.224);
+   border-radius: 5%;
+   margin-top: 5%;
+   padding-top: 2%;
+   
+}
+label{
+    color: white;
+}
+.button-delete{
+    background-color: rgba(255, 0, 0, 0.656);
+}
+.button-edit{
+    background-color: rgb(8, 108, 133);
+    color: white;
+
+
+}
+input[class^="button"] {
+    border-radius: 10px;
+    color: white;
+    width: 75px;
+
+  }
+div.col{
+    display: flex;
+    justify-content: center;
+}
+.btn-save{
+
+    
+    background-color: rgb(5, 139, 14);
+    color: white;
+    width: 200px;
+ height: 30px;
+    border-radius: 15px;
+  
+}
+.btn-save:hover{
+    background-color: rgba(5, 139, 14, 0.635);
+    transition: 0.5s;
+}
+
+
+div[class^="table-responsive"]  > table{
+    background-color: rgb(255, 255, 255);
+    color: aquamarine;
+}
+  
