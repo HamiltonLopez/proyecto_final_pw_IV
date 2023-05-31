@@ -8,7 +8,7 @@
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
 		<div class="login-space">
 			<div class="login">
-        <form action="">
+        <form action="<?php echo $BASE_ROOT_URL_PATH;?>controller/User/validateCredentials.php" method="post">
 
        
 				<div class="group">
