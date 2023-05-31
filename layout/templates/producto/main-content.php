@@ -1,8 +1,11 @@
 <?php
  require_once ($BASE_ROOT_FOLDER_PATH.'configs/database.php');
  require_once($BASE_ROOT_FOLDER_PATH.'classes/Reloj.php');
+ require_once($BASE_ROOT_FOLDER_PATH.'classes/TipoReloj.php');
  $reloj = new Reloj();
  $registros = $reloj->getAll(); 
+ $tipoReloj = new TipoReloj();
+ $tipos = $tipoReloj->getAll();
  
   ?>
 
@@ -79,8 +82,8 @@
           <th>#</th>
                 <th>Marca</th>
                 <th>ID</th>
-                <th>Tipo Reloj</th>
                 <th>Modelo</th>
+                <th>Tipo Reloj</th>
                 <th>Precio</th>
                 <th>Acciones</th>
           </thead>

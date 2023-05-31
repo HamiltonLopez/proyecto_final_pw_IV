@@ -24,17 +24,17 @@ class Reloj {
 		$this->pdo = null; //Se destruye la conexíon a la base de datos creada en el constructor
 	}
 
-	public function save( $nombreReloj, $modeloReloj, $idReloj, $idTipoReloj = 1, $precioReloj) {
+	public function save( $nombreReloj, $modeloReloj, $idReloj, $idTipoReloj, $precioReloj) {
 		
 		try {
-				$sql = "INSERT INTO {$this->table_name} VALUES ({$nombreReloj}, {$modeloReloj}, {$idReloj}, {$idTipoReloj}, {$precioReloj});";
+				$sql = "INSERT INTO {$this->table_name} VALUES ({$idReloj},{$nombreReloj} , {$modeloReloj}, {$idTipoReloj}, {$precioReloj});";
 
 				$stmt = $this->pdo->prepare($sql);
 				$stmt->bindValue(':nombreReloj', $nombreReloj,PDO::PARAM_STR);
 				$stmt->bindValue(':modeloReloj', $modeloReloj,PDO::PARAM_STR);
 				$stmt->bindValue(':idReloj', $idReloj,PDO::PARAM_INT);
 				$stmt->bindValue(':idTipoReloj', $idTipoReloj,PDO::PARAM_STR);
-				$stmt->bindValue(':precioReloj', $precioReloj,PDO::PARAM_DOUBLE);
+				$stmt->bindValue(':precioReloj', $precioReloj,PDO::PARAM_INT);
 
 				$stmt->execute();
 			}
@@ -49,7 +49,7 @@ class Reloj {
 		$orderBy = $orderByDesc?'DESC':'ASC';
 
 		try {
-			$sql = "SELECT idReloj, nombreReloj, modeloReloj, idTipoReloj, precioReloj FROM {$this->table_name} ORDER BY {$orderBy}";
+			$sql = "SELECT * FROM {$this->table_name}";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -97,7 +97,7 @@ class Reloj {
 
 	public function delete($id) {
 		try {
-			$sql ="DELETE FROM {$this->table_name} WHERE idReloj = {$id}";
+			$sql ='DELETE FROM '.$this->table_name.' WHERE `idReloj` = :id';
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->bindValue(':id', $id,PDO::PARAM_INT);
 			$stmt->execute();
@@ -109,7 +109,7 @@ class Reloj {
 		}
 
 	}
-
+/*
   public function update( $idReloj, $nombreReloj, $modeloReloj, $idTipoReloj, $precioReloj) {
 		
     try {
@@ -119,7 +119,7 @@ class Reloj {
 			$stmt->bindValue(':nombreReloj', $nombreReloj,PDO::PARAM_STR);
 			$stmt->bindValue(':modeloReloj', $modeloReloj,PDO::PARAM_STR);
 			$stmt->bindValue(':idTipoReloj', $idTipoReloj,PDO::PARAM_STR);
-			$stmt->bindValue(':precioReloj', $precioReloj,PDO::PARAM_DOUBLE);
+			$stmt->bindValue(':precioReloj', $precioReloj,PDO::PARAM_INT);
 
             $stmt->bindValue(':id', $id,PDO::PARAM_INT);
 			$stmt->execute();
@@ -127,5 +127,5 @@ class Reloj {
 		catch(PDOException $e) {
 			throw new Exception("Error trying to update record (id): {$id} on {$this->table_name} table. ".$e->getMessage());
 		  }
-	}
+	}*/
 }
