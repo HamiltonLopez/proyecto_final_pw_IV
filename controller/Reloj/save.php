@@ -1,26 +1,23 @@
 <?php
   require_once ('config.php');
   require_once ($BASE_ROOT_FOLDER_PATH.'includes/database.php');
-  require($BASE_ROOT_FOLDER_PATH.'classes/Persona.php');
+  require($BASE_ROOT_FOLDER_PATH.'classes/Reloj.php');
   
-  if(!empty($_POST['name'])){
+  if(!empty($_POST['nombreReloj'])){
     
-    $persona = new Persona();
+    $reloj = new Reloj();
 
-    $num_rows = count($_POST['name']);
+    $num_rows = count($_POST['nombreReloj']);
 
     for($i = 0; $i < $num_rows; $i++){   
                   
-      $name =  $_POST['name'][$i];
-      $lastname =  $_POST['lastname'][$i];
-      $document_type =  $_POST['document_type'][$i];
-      $document =  $_POST['document'][$i];
-      $address =  $_POST['address'][$i];
-      $phone =  $_POST['phone'][$i];
-      $email =  $_POST['email'][$i];
-      $birthday =  $_POST['birthday'][$i];
+      $ideReloj = $_POST['idReloj'][$i];
+      $nombreReloj =  $_POST['nombreReloj'][$i];
+      $modeloReloj =  $_POST['modeloReloj'][$i];
+      $idTipoReloj =  $_POST['idTipoReloj'][$i];
+      $precioReloj =  $_POST['precioReloj'][$i];
 
-      $persona->save( $name, $lastname, $document_type, $document, $address, $phone, $email, $birthday);
+      $reloj->save( $ideReloj, $nombreReloj, $modeloeReloj, $idTipoReloj, $precioReloj);
     }
   }
 
