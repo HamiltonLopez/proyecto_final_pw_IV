@@ -1,15 +1,12 @@
 <?php
     require_once ('config.php');
     require_once ($BASE_ROOT_FOLDER_PATH.'includes/database.php');
-    require($BASE_ROOT_FOLDER_PATH.'classes/Persona.php');
-    $id = $_GET['id'];
+    require($BASE_ROOT_FOLDER_PATH.'classes/Reloj.php');
+    $id = $_GET['idReloj'];
 
-    $persona = new Persona();
-    $datos = $persona->getById($id);
+    $reloj = new Reloj();
+    $datos = $reloj->getById($id);
 
-    //$dateStr = strlen($datos['birthday'])>=10?explode('-',substr($datos['birthday'],0,10)):['0000','00','00'];
-    //$date = $dateStr[2].'/'.$dateStr[1].'/'.$dateStr[0];
-    $dateStr = strlen($datos['birthday'])>=10?substr($datos['birthday'],0,10):'';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,41 +46,32 @@
     </div>
 
     <form class="row g-3 align-items-center" action="<?php echo $BASE_ROOT_URL_PATH;?>includes/update.php" method="post">
-      <input type="hidden" name="id" value="<?php echo $datos['id'];?>">
+      <input type="hidden" name="id" value="<?php echo $datos['idReloj'];?>">
       <div class="px-4 py-2 row">
-        <label for="name" class="col-6 col-form-label fw-bolder">Nombre</label>
+        <label for="nombreReloj" class="col-6 col-form-label fw-bolder">Nombre</label>
         <div class="col-6">
-          <input type="text" class="form-control" name="name" value="<?php echo $datos['name'];?>" placeholder="Ingrese nombre" required>
+          <input id="nombreReloj" type="text" class="form-control" name="nombreReloj[]" value="<?php echo $datos['nombreReloj'];?>" placeholder="Ingrese nombre" required>
         </div>
       </div>
       <div class="px-4 py-2 row">
-        <label for="name" class="col-6 col-form-label fw-bolder">Apellido</label>
+        <label for="modeloReloj" class="col-6 col-form-label fw-bolder">Modelo</label>
         <div class="col-6">
-          <input type="text" class="form-control" name="lastname" value="<?php echo $datos['lastname'];?>" placeholder="Ingrese apellido">
+          <input id="modeloReloj" type="text" class="form-control" name="modeloReloj[]" value="<?php echo $datos['modeloReloj'];?>" placeholder="Ingrese el modelo">
         </div>
       </div>
       <div class="px-4 py-2 row">
-        <label for="name" class="col-6 col-form-label fw-bolder">Dirección</label>
+        <label for="tipoReloj" class="col-6 col-form-label fw-bolder">Tipo</label>
         <div class="col-6">
-          <input type="text" class="form-control" name="address" value="<?php echo $datos['address'];?>" placeholder="Ingrese dirección">
+          <select name="idTipoReloj[]" id="tipoReloj">
+            <option value="1">Masculino</option>
+            <option value="2">Femenino</option>
+          </select>
         </div>
       </div>
       <div class="px-4 py-2 row">
-        <label for="name" class="col-6 col-form-label fw-bolder">Teléfono</label>
+        <label for="precioReloj" class="col-6 col-form-label fw-bolder">Precio</label>
         <div class="col-6">
-          <input type="text" class="form-control" name="phone" value="<?php echo $datos['phone'];?>" placeholder="Ingrese teléfono">
-        </div>
-      </div>
-      <div class="px-4 py-2 row">
-        <label for="name" class="col-6 col-form-label fw-bolder">Correo electrónico</label>
-        <div class="col-6">
-          <input type="email" class="form-control" name="email" value="<?php echo $datos['email'];?>" placeholder="Ingrese correo electrónico">
-        </div>
-      </div>
-      <div class="px-4 py-2 row">
-        <label for="name" class="col-6 col-form-label fw-bolder">Fecha de nacimiento</label>
-        <div class="col-6">
-          <input type="date" class="form-control" name="birthday" value="<?php echo $dateStr;?>" placeholder="Ingrese fecha de nacimiento">
+          <input id="precioReloj" type="number" class="form-control" name="precioReloj[]" value="<?php echo $datos['precioReloj'];?>" placeholder="Ingrese el precio">
         </div>
       </div>
       <div class="px-4 py-2 row">
