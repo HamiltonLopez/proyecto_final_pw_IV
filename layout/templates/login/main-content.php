@@ -12,12 +12,12 @@
 
        
 				<div class="group">
-					<label for="user" class="label">Username</label>
-					<input id="user" type="text" class="input"  placeholder="Enter your username" required>
+					<label for="user" class="label">Email</label>
+					<input id="user" name="userEmail" type="text" class="input"  placeholder="Enter your email" required>
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password" placeholder="Enter your password" required>
+					<input id="pass" name="userPassword" type="password" class="input" data-type="password" placeholder="Enter your password" required>
 				</div>
 				<div class="group">
 					<input id="check" type="checkbox" class="check" checked>
@@ -33,24 +33,24 @@
 				</div>
 			</div>
 			<div class="sign-up-form">
-        <form action="">
+        <form action="<?php echo $BASE_ROOT_URL_PATH;?>controller/User/save.php" method="post">
 
        
 				<div class="group">
 					<label for="user" class="label">Username</label>
-					<input id="user" type="text" class="input" placeholder="Create your Username" required>
+					<input id="user" name="userName" type="text" class="input" placeholder="Create your Username" required>
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password" placeholder="Create your password" required>
+					<input id="pass" name="userPassword" type="password" class="input" data-type="password" placeholder="Create your password" required>
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Repeat Password</label>
-					<input id="pass" type="password" class="input" data-type="password" placeholder="Repeat your password" required>
+					<input id="pass" name="confirmPassword" type="password" class="input" data-type="password" placeholder="Repeat your password" required>
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Email Address</label>
-					<input id="pass" type="email" class="input" placeholder="Enter your email address" required>
+					<input id="pass" name="userEmail" type="email" class="input" placeholder="Enter your email address" required>
 				</div>
 				<div class="group">
 					<input type="submit" class="button" value="Sign Up">
