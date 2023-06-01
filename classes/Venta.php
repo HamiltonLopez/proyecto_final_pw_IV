@@ -3,6 +3,7 @@ class Venta {
 
     /*
         idVenta INT PK NOT NULL,
+		estadoVenta VARCHAR(10) NOT NULL
         nombreEmpresa VARCHAR(30) NOT NULL,
         telefonoEmpresa CHAR(10) NOT NULL,
         idCliente INT FK NOT NULL,
@@ -28,19 +29,20 @@ class Venta {
     public function crearVenta($idCliente) {
 		
 		try {
-				$sql = 'INSERT INTO `'.$this->table_name.'` SET `nombreEmpresa` = :nombreEmpresa, 
-                `telefonoEmpresa` = :telefonoEmpresa, `idCliente` = :idCliente, 
+				$sql = 'INSERT INTO `'.$this->table_name.'` SET `estadoVenta` = :estadoVenta,
+				`nombreEmpresa` = :nombreEmpresa, `telefonoEmpresa` = :telefonoEmpresa, `idCliente` = :idCliente, 
                 `fechaRealizacionVenta` = :fechaRealizacionVenta, `totalVenta` = :totalVenta;';
 
                 $fechaActual = date('Y-m-d');
                 $totalVenta = 0,0;
 
 				$stmt = $this->pdo->prepare($sql);
-				$stmt->bindValue(':nombreEmpresa', 'TEMPUS FUGIT',PDO::PARAM_INT);
+				$stmt->bindValue(':estadoVenta', 'generada',PDO::PARAM_STR);
+				$stmt->bindValue(':nombreEmpresa', 'TEMPUS FUGIT',PDO::PARAM_STR);
 				$stmt->bindValue(':telefonoEmpresa', '3156263333',PDO::PARAM_STR);
-                $stmt->bindValue(':idCliente', $idCliente ,PDO::PARAM_STR);
+                $stmt->bindValue(':idCliente', $idCliente ,PDO::PARAM_INT);
                 $stmt->bindValue(':fechaRealizacionVenta', $fechaActual ,PDO::PARAM_STR);
-                $stmt->bindValue(':totalVenta', $totalVenta , PDO::PARAM_STR);
+                $stmt->bindValue(':totalVenta', $totalVenta , PDO::PARAM_DOUBLE);
 
 				$stmt->execute();
 			}
@@ -49,32 +51,13 @@ class Venta {
 		}
 	}
 
-    public function getAll($orderByDesc = true) {		
-		
-		$result = array();
-		$orderBy = $orderByDesc?'DESC':'ASC';
-
-		try {
-			$sql = " SELECT idVenta, nombreEmpresa, telefonoEmpresa, idCliente, fechaRealizacionVenta, totalVenta
-             FROM {$this->table_name} ORDER BY {$orderBy}";
-			$stmt = $this->pdo->prepare($sql);
-			$stmt->execute();
-			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		}
-		catch(PDOException $e) {
-			throw new Exception("Error trying to get records from {$this->table_name} table: ".$e->getMessage());
-		}
-
-		return $result;
-	}
-
-    public function getById($idVenta) {		
+	public function getById($idVenta) {		
 		
 		$result = array();
 
 		try {
-			$sql = " SELECT idVenta, nombreEmpresa, telefonoEmpresa, idCliente, fechaRealizacionVenta, totalVenta
-             FROM {$this->table_name} WHERE idVenta = {$idVenta}";
+			$sql = " SELECT idVenta, estadoVenta, nombreEmpresa, telefonoEmpresa, idCliente, fechaRealizacionVenta, 
+			totalVenta FROM {$this->table_name} WHERE idVenta = :idVenta";
 			$stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':idVenta', $idVenta,PDO::PARAM_INT);
 			$stmt->execute();
@@ -86,4 +69,61 @@ class Venta {
 
 		return $result;
 	}
+
+    public function getAll($orderByDesc = true) {		
+		
+		$result = array();
+		$orderBy = $orderByDesc?'DESC':'ASC';
+
+		try {
+			$sql = " SELECT idVenta, estadoVenta, nombreEmpresa, telefonoEmpresa, idCliente, fechaRealizacionVenta, 
+			totalVenta FROM {$this->table_name} ORDER BY {$orderBy}";
+			$stmt = $this->pdo->prepare($sql);
+			$stmt->execute();
+			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $e) {
+			throw new Exception("Error trying to get records from {$this->table_name} table: ".$e->getMessage());
+		}
+
+		return $result;
+	}
+
+	public function calcularTotal($idVenta) {		
+		
+		$totalVenta = 0.0;
+
+		try {
+			$sql = " SELECT SUM(rl.precio) AS totalVenta FROM {detalleVenta} dv JOIN {reloj} rl ON dv.idReloj = rl.idReloj 
+			WHERE dv.idVenta = :idVenta";
+			$stmt = $this->pdo->prepare($sql);
+			$stmt->bindValue(':idVenta', $idVenta, PDO::PARAM_INT);
+			$totalVenta = SUM(rl.precio);
+
+			$sql = " UPDATE {$this->table_name} SET totalVenta = :totalVenta WHERE idVenta = :idVenta";
+			$stmt->bindValue(':totalVenta', $totalVenta, PDO::PARAM_DOUBLE);
+			$stmt->execute();
+		}
+		catch(PDOException $e) {
+			throw new Exception("Error trying to get records from {detalleVenta} table: ".$e->getMessage());
+		}
+
+	}
+
+	public function anularVenta($idVenta) {
+
+		try {
+			$sql = "UPDATE {$this->table_name} SET estadoVenta = :estadoVenta WHERE idVenta = :idVenta";
+			$stmt = $this->pdo->prepare($sql);
+			$stmt->bindValue(':idVenta', $idVenta,PDO::PARAM_INT);
+			$stmt->bindValue(':estadoVenta', 'anulada',PDO::PARAM_STR);
+			$stmt->execute();
+		}
+		catch(PDOException $e) {
+			throw new Exception("Error trying to update record (id): {$idVenta} on {$this->table_name} table. ".$e->getMessage());
+		}
+	}
+
+	}
+
 }
