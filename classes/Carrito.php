@@ -31,7 +31,7 @@ class Carrito {
 
 				$stmt = $this->pdo->prepare($sql);
 				$stmt->bindValue(':idReloj', $idReloj,PDO::PARAM_INT);
-				$stmt->bindValue(':cantidadRelojes', $cantidadRelojes,PDO::PARAM_STR);
+				$stmt->bindValue(':cantidadRelojes', $cantidadRelojes,PDO::PARAM_INT);
 
 				$stmt->execute();
 			}
@@ -45,7 +45,7 @@ class Carrito {
 		$result = array();
 
 		try {
-			$sql = "SELECT idCarrito, idReloj, cantidadRelojes FROM {$this->table_name} WHERE idCarrito = {$idCarrito}";
+			$sql = "SELECT idCarrito, idReloj, cantidadRelojes FROM {$this->table_name} WHERE idCarrito = :idCarrito";
 			$stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':idCarrito', $idCarrito,PDO::PARAM_INT);
 			$stmt->execute();
@@ -60,7 +60,7 @@ class Carrito {
 
     public function removeProduct($idCarrito) {
 		try {
-			$sql ="DELETE FROM {$this->table_name} WHERE idCarrito = {$idCarrito}";
+			$sql ="DELETE FROM {$this->table_name} WHERE idCarrito = :idCarrito";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->bindValue(':idCarrito', $idCarrito,PDO::PARAM_INT);
 			$stmt->execute();
@@ -76,11 +76,10 @@ class Carrito {
     public function updateCountProduct($idCarrito, $cantidadRelojes) {
 		
         try {
-                $sql = "UPDATE {$this->table_name} SET cantidadRelojes = {$cantidadRelojes} WHERE idCarrito = {$idCarrito}";
+                $sql = "UPDATE {$this->table_name} SET cantidadRelojes = :cantidadRelojes WHERE idCarrito = :idCarrito";
     
                 $stmt = $this->pdo->prepare($sql);
-                $stmt->bindValue(':cantidadRelojes', $cantidadRelojes,PDO::PARAM_STR);
-    
+                $stmt->bindValue(':cantidadRelojes', $cantidadRelojes,PDO::PARAM_INT);
                 $stmt->bindValue(':idCarrito', $idCarrito,PDO::PARAM_INT);
                 $stmt->execute();
             }
