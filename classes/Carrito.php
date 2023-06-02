@@ -40,17 +40,17 @@ class Carrito {
 		}
 	}
 
-    public function getAll($orderByDesc = true) {		
+    public function getAll($orderByDesc = true, $limit = 0) {		
 		
 		$result = array();
 		$orderBy = $orderByDesc?'DESC':'ASC';
+		$limitString = $limit==0?'':' LIMIT '.$limit;
 
 		try {
 			$sql = "SELECT ct.idCarrito, rl.nombreReloj, tr.nombreTipo, rl.modeloReloj, ct.cantidadRelojes 
-			FROM {$this->table_name}  AS ct 
-			JOIN reloj AS rl ON ct.idReloj = rl.idReloj
-			JOIN tipoReloj AS tr ON rl.idTipoReloj = tr.idTipo 
-			ORDER BY {$orderBy}";
+			FROM {$this->table_name} AS ct 
+			INNER JOIN reloj AS rl ON ct.idReloj = rl.idReloj
+			INNER JOIN tipoReloj AS tr ON rl.tipoReloj = tr.idTipo";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);

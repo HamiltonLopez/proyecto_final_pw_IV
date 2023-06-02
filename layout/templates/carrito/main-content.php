@@ -1,9 +1,8 @@
 <?php
-  /*require_once ($BASE_ROOT_FOLDER_PATH.'configs/database.php');
+  require_once ($BASE_ROOT_FOLDER_PATH.'configs/database.php');
   require($BASE_ROOT_FOLDER_PATH.'classes/Carrito.php');
   $carrito = new Carrito();
-  $registros = $carrito->getAll(); //obtenemos todos los registros de la tabla*/
-  //echo $_SESSION['module_title'];
+  $registros = $carrito->getAll(); //obtenemos todos los registros de la tabla
 ?>
 
 <div class="container">
@@ -23,7 +22,7 @@
           </thead>
           <tbody>
             <?php
-              /*if(count($registros) < 1){
+            if(count($registros) < 1){
             ?>
               <tr>
                 <td colspan="7">No hay registros</td>
@@ -46,7 +45,7 @@
                 </tr>
             <?php
                 }
-              }*/
+              }
             ?>
           </tbody>
         </table>
