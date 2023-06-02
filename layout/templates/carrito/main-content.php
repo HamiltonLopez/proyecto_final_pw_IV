@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row align-items-center py-5" id="show-content">
       <div class="col-12 text-center">
-        <h1 class="py-0 text-white pb-3">CARRITO DE COMPRAS</h1>
+        <h1 class="py-4 text-white pb-3">CARRITO DE COMPRAS</h1>
       </div>
       <div class="table-responsive">
         <table class="table table-bordered align-middle" id="edit-table">
