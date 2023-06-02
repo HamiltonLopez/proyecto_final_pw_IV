@@ -47,6 +47,9 @@
                 }
               }
             ?>
+            <div>
+              <input type="button" value="Limpiar Carrito" onClick="limpiar_carrito();">
+            </div>
           </tbody>
         </table>
       </div>    

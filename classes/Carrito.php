@@ -67,7 +67,11 @@ class Carrito {
 		$result = array();
 
 		try {
-			$sql = "SELECT idCarrito, idReloj, cantidadRelojes FROM {$this->table_name} WHERE idCarrito = :idCarrito";
+			$sql = "SELECT ct.idCarrito, rl.nombreReloj, tr.nombreTipo, rl.modeloReloj, ct.cantidadRelojes 
+			FROM {$this->table_name} AS ct 
+			INNER JOIN reloj AS rl ON ct.idReloj = rl.idReloj
+			INNER JOIN tipoReloj AS tr ON rl.tipoReloj = tr.idTipo
+			WHERE idCarrito = :idCarrito";
 			$stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':idCarrito', $idCarrito,PDO::PARAM_INT);
 			$stmt->execute();
@@ -114,7 +118,7 @@ class Carrito {
     public function clearCar() {
         
         try {
-            $sql = "DELETE FROM {$this->table_name}";
+            $sql = "TRUNCATE TABLE {$this->table_name};";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
