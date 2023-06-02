@@ -47,7 +47,7 @@ class Carrito {
 
 		try {
 			$sql = "SELECT ct.idCarrito, rl.nombreReloj, tr.nombreTipo, rl.modeloReloj, ct.cantidadRelojes 
-			FROM {$this->table_name}  AS ct 
+			FROM {$this->table_name} AS ct 
 			JOIN reloj AS rl ON ct.idReloj = rl.idReloj
 			JOIN tipoReloj AS tr ON rl.idTipoReloj = tr.idTipo 
 			ORDER BY {$orderBy}";
