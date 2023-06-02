@@ -1,11 +1,11 @@
 <?php
-    require_once ('../../configs/config.php');
-    require_once ($BASE_ROOT_FOLDER_PATH.'configs/database.php');
-    require($BASE_ROOT_FOLDER_PATH.'classes/Carrito.php');
-    $idCarrito = $_GET['idCarrito'];
+    require_once ('config.php');
+    require_once ($BASE_ROOT_FOLDER_PATH.'includes/database.php');
+    require($BASE_ROOT_FOLDER_PATH.'classes/User.php');
+    $idUser = $_GET['idUser'];
 
-    $carrito = new Carrito();
-    $datos = $carrito->getProduct($idCarrito);
+    $user = new User();
+    $datos = $user->getById($idUser);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>Edición y guardado de datos de forma dinámica con Javascript y PHP</title>
+  <title>Edicion del usuario</title>
   <link rel="stylesheet" href="<?php echo $BASE_ROOT_URL_PATH.'assets/';?>css/bootstrap.min.css">
   <script src="<?php echo $BASE_ROOT_URL_PATH.'assets/';?>js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="<?php echo $BASE_ROOT_URL_PATH.'assets/';?>css/style.css" />
@@ -26,7 +26,7 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-12 text-center">
-        <span class="fw-bolder fs-3">Edición y guardado de datos de forma dinámica con Javascript y PHP</span>
+        <span class="fw-bolder fs-3">Edición del usuario</span>
       </div>
     </div>
     
@@ -36,7 +36,7 @@
 
     <div class="row align-items-center">
       <div class="col-12 text-center">
-        <span class="fw-bolder fs-4">Datos del Reloj</span>
+        <span class="fw-bolder fs-4">Datos del usuario</span>
       </div>
     </div>
 
@@ -44,30 +44,30 @@
       <div class="span12">&nbsp;</div>
     </div>
 
-    <form class="row g-3 align-items-center" action="<?php echo $BASE_ROOT_URL_PATH;?>controller/Carrito/update.php" method="post">
-      <input type="hidden" name="idCarrito" value="<?php echo $datos['idCarrito'];?>">
+    <form class="row g-3 align-items-center" action="<?php echo $BASE_ROOT_URL_PATH;?>includes/update.php" method="post">
+      <input type="hidden" name="id" value="<?php echo $datos['idUser'];?>">
       <div class="px-4 py-2 row">
-        <label for="nombreReloj" class="col-6 col-form-label fw-bolder">Nombre Reloj</label>
+        <label for="name" class="col-6 col-form-label fw-bolder">UserName</label>
         <div class="col-6">
-          <input type="text" class="form-control" name="nombreReloj" value="<?php echo $datos['nombreReloj'];?>" placeholder="Ingrese nombre" readonly>
+          <input type="text" class="form-control" name="userName" value="<?php echo $datos['userName'];?>" readonly>
         </div>
       </div>
       <div class="px-4 py-2 row">
-        <label for="tipoReloj" class="col-6 col-form-label fw-bolder">Tipo Reloj</label>
+        <label for="name" class="col-6 col-form-label fw-bolder">Password</label>
         <div class="col-6">
-          <input type="text" class="form-control" name="tipoReloj" value="<?php echo $datos['tipoReloj'];?>" placeholder="Ingrese nombre" readonly>
+          <input type="text" class="form-control" name="userPassword" value="<?php echo $datos['userPassword'];?>" require>
         </div>
       </div>
       <div class="px-4 py-2 row">
-        <label for="modeloReloj" class="col-6 col-form-label fw-bolder">Modelo Reloj</label>
+        <label for="name" class="col-6 col-form-label fw-bolder">Password</label>
         <div class="col-6">
-          <input type="text" class="form-control" name="modeloReloj" value="<?php echo $datos['modeloReloj'];?>" placeholder="Ingrese nombre" readonly>
+          <input type="text" class="form-control" name="userPassword" value="<?php echo $datos['userPassword'];?>" require>
         </div>
       </div>
       <div class="px-4 py-2 row">
-        <label for="cantidadRelojes" class="col-6 col-form-label fw-bolder">Cantidad Relojes</label>
+        <label for="name" class="col-6 col-form-label fw-bolder">Email</label>
         <div class="col-6">
-          <input type="number" class="form-control" name="cantidadRelojes" value="<?php echo $datos['cantidadRelojes'];?>" readonly>
+          <input type="text" class="form-control" name="userEmail" value="<?php echo $datos['userEmail'];?>" require>
         </div>
       </div>
       <div class="px-4 py-2 row">
