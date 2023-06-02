@@ -33,21 +33,20 @@ function shows_edit_table(){
     tr.append(td1);
 
     let td2 = document.createElement("td");
-    let input2 = document.createElement('option');
-    input2.setAttribute('id','address'+i);
-    input2.setAttribute('name','address[]');
     let select1 = document.createElement('select');
+    select1.setAttribute('name','type[]');
+    select1.setAttribute('id','type'+i);
     td2.append(select1);
-    let opt = document.createElement('option');
-    let opt1 = document.createElement('option');
-    opt.setAttribute('value','DAMA');
-    opt1.setAttribute('value','CABALLERO');
-    opt.innerHTML = 'DAMA';
-    opt1.innerHTML = 'CABALLERO';
-    select1.append(opt);
-    select1.append(opt1);
-   
     tr.append(td2);
+    for(let i=0; i<tipoReloj.length; i++) {
+      let option = null;
+      option = document.createElement('option');
+      option.setAttribute('value',tipoReloj[i].idTipo);
+      option.innerHTML = tipoReloj[i].nombreTipo;
+      select1.append(option);
+    }
+   
+   
 
     let td3 = document.createElement("td");
     let input3 = document.createElement('input');
@@ -63,15 +62,6 @@ function shows_edit_table(){
     td4.append(input4);
     tr.append(td4);
 
-   /* let td5 = document.createElement("td");
-    let input5 = document.createElement('input');
-    input5.setAttribute('id','birthday'+i);
-    input5.setAttribute('name','birthday[]');
-    input5.setAttribute('type','date');
-    //input5.setAttribute('value','1910-01-01');
-    td5.append(input5);
-    tr.append(td5);
-  */
     tBody.append(tr);
   }
 

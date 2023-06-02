@@ -1,23 +1,23 @@
 <?php
-  require_once ('../../config.php');
-  require_once ($BASE_ROOT_FOLDER_PATH.'includes/database.php');
-  require($BASE_ROOT_FOLDER_PATH.'classes/Reloj.php');
+  require_once ('../../configs/config.php');
+  require_once ($BASE_ROOT_FOLDER_PATH.'configs/database.php');
+  require_once($BASE_ROOT_FOLDER_PATH.'classes/Reloj.php');
   
-  if(!empty($_POST['nombreReloj'])){
+  if(!empty($_POST['name'])){
     
     $reloj = new Reloj();
 
-    $num_rows = count($_POST['nombreReloj']);
+    $num_rows = count($_POST['name']);
 
     for($i = 0; $i < $num_rows; $i++){   
                   
-      $ideReloj = $_POST['idReloj'][$i];
-      $nombreReloj =  $_POST['nombreReloj'][$i];
-      $modeloReloj =  $_POST['modeloReloj'][$i];
-      $idTipoReloj =  $_POST['idTipoReloj'][$i];
-      $precioReloj =  $_POST['precioReloj'][$i];
+      $idReloj = $_POST['ids'][$i];
+      $nombreReloj =  $_POST['name'][$i];
+      $modeloReloj =  $_POST['modelos'][$i];
+      $idTipoReloj =  $_POST['type'][$i];
+      $precioReloj =  $_POST['precio'][$i];
 
-      $reloj->save( $ideReloj, $nombreReloj, $modeloeReloj, $idTipoReloj, $precioReloj);
+      $reloj->save( $idReloj,$nombreReloj, $modeloReloj,  $idTipoReloj, $precioReloj);
     }
   }
 

@@ -28,7 +28,7 @@ class TipoReloj {
 		$result = array();
 
 		try {
-			$sql = "SELECT 'nombreTipo' FROM {$this->table_name}";
+			$sql = "SELECT * FROM {$this->table_name}";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);

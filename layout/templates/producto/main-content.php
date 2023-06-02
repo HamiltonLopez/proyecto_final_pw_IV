@@ -3,11 +3,16 @@
  require_once($BASE_ROOT_FOLDER_PATH.'classes/Reloj.php');
  require_once($BASE_ROOT_FOLDER_PATH.'classes/TipoReloj.php');
  $reloj = new Reloj();
- $registros = $reloj->getAll(); 
+ $registros = $reloj->getAll();
+
  $tipoReloj = new TipoReloj();
  $tipos = $tipoReloj->getAll();
- 
+
+
   ?>
+  <script>
+    let tipoReloj = <?php echo json_encode($tipos);?>;
+  </script>
 
 <div class="container" id="main-content">
     <div class="row align-items-center">
@@ -39,7 +44,7 @@
     </div>
 
     <div class="row align-items-center">
-      <form action="<?php echo $BASE_ROOT_URL_PATH;?>modules/people/save.php" method="post">
+      <form action="<?php echo $BASE_ROOT_URL_PATH;?>controller/Reloj/save.php" method="post">
         <div class="row align-items-center mx-4" id="edit-content">
           <div class="col-12 text-center"><span class="fs-4">Tabla de registro de nuevos datos</span></div>
         </div>
@@ -104,9 +109,9 @@
                   <td><?php echo $fila['nombreReloj']?></td>
                   <td><?php echo $fila['idReloj']?></td>
                   <td><?php echo $fila['modeloReloj']?></td>
-                  <td><?php echo $fila['tipoReloj']?></td>
+                  <td><?php echo $fila['nombreTipo']?></td>
                
-                  <td><?php echo $fila['precioReloj']?></td>
+                  <td>$<?php echo $fila['precioReloj']?></td>
 
                   <td>
                     

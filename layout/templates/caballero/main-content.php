@@ -2,7 +2,7 @@
 require_once ($BASE_ROOT_FOLDER_PATH.'configs/database.php');
 require_once($BASE_ROOT_FOLDER_PATH.'classes/Reloj.php');
 $reloj = new Reloj();
-$registros = $reloj->getAll(); ?>
+$registros = $reloj->getByType(1); ?>
 <div class="man container">
   <div
     class="cards row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4"
@@ -30,8 +30,11 @@ $registros = $reloj->getAll(); ?>
           <p class="card-text">
           Modelo :<?php echo $row['modeloReloj']; ?>
           </p>
-          <p>Tipo : <?php echo $row['tipoReloj']; ?></p>
+          <p>Tipo : <?php echo $row['nombreTipo']; ?></p>
           <p>$ <?php echo $row['precioReloj']; ?></p>
+          <p><?php echo $row['idReloj']; ?></p>
+
+         
           </div>
           <a href="#" class="btn btn-primary d-flex justify-content-center ">Añadir   <i class="bi bi-cart3"></i></a>
          
