@@ -26,6 +26,7 @@ $registros = $reloj->getByType(1); ?>
           <h5 class="card-title"><?php echo $row['nombreReloj']; ?></h5>
 
           <div class="text">
+          <p><?php echo $row['idReloj'];?></p>
           <p class="card-text">
           Modelo :<?php echo $row['modeloReloj']; ?>
           </p>
@@ -35,7 +36,7 @@ $registros = $reloj->getByType(1); ?>
          
         </div>
         <div class="d-flex justify-content-center">
-          <input type="button" value="Añadir al carrito" class="btn btn-primary d-flex justify-content-center" onClick="añadir_producto(<?php $row['idReloj']; ?>);">
+          <input type="button" value="Añadir al carrito" class="btn btn-primary d-flex justify-content-center" onClick="añadir_producto(<?php echo $row['idReloj']; ?>);">
         </div>
       </div>
     </div>
