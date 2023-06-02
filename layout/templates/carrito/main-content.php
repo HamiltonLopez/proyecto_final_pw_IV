@@ -3,31 +3,27 @@
   require($BASE_ROOT_FOLDER_PATH.'classes/data/Carrito.php');
   $carrito = new Carrito();
   $registros = $carrito->getAll(); //obtenemos todos los registros de la tabla*/
-  echo $_SESSION['module_title'];
+  //echo $_SESSION['module_title'];
 ?>
 
 <div class="container">
     <div class="row align-items-center py-5" id="show-content">
       <div class="col-12 text-center">
-        <h1>CARRITO DE COMPRAS</h1>
+        <h1 class="py-0 text-white pb-3">CARRITO DE COMPRAS</h1>
       </div>
       <div class="table-responsive">
         <table class="table table-bordered align-middle" id="edit-table">
           <thead class="table-light">
             <th>#</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Tipo Documento</th>
-            <th># Documento</th>
-            <th>Dirección</th>
-            <th>Teléfono</th>
-            <th>Correo electrónico</th>
-            <th>Fecha de nacimiento</th>
+            <th>Nombre Reloj</th>
+            <th>Tipo Reloj</th>
+            <th>Modelo Reloj</th>
+            <th>Cantidad</th>
             <th>Acción</th>
           </thead>
           <tbody>
             <?php
-              if(count($registros) < 1){
+              /*if(count($registros) < 1){
             ?>
               <tr>
                 <td colspan="7">No hay registros</td>
@@ -54,7 +50,7 @@
                 </tr>
             <?php
                 }
-              }
+              }*/
             ?>
           </tbody>
         </table>
