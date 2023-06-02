@@ -67,7 +67,7 @@
       <div class="px-4 py-2 row">
         <label for="name" class="col-6 col-form-label fw-bolder">Email</label>
         <div class="col-6">
-          <input type="text" class="form-control" name="userEmail" value="<?php echo $datos['userEmail'];?>" require>
+          <input type="text" class="form-control" name="userEmail" value="<?php echo $datos['userEmail'];?>" readonly>
         </div>
       </div>
       <div class="px-4 py-2 row">
