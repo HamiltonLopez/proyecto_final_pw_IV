@@ -23,10 +23,8 @@
 
        
 				<div class="group">
-
-					<label for="user" class="label">Username/Email</label>
-					<input id="user" type="text" class="input"  placeholder="Enter your username/email" required>
-
+					<label for="user" class="label">Email</label>
+					<input id="user" name="userEmail" type="text" class="input"  placeholder="Enter your email" required>
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Password</label>

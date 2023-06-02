@@ -23,7 +23,6 @@ class User {
 		$this->pdo = null; //Se destruye la conexíon a la base de datos creada en el constructor
 	}
 
-	//Quitar el idUsuario de este método
     public function createUser($userName, $userPassword, $userEmail) {
 		
 		try {
@@ -88,7 +87,7 @@ class User {
 		$result = array();
 
 		try {
-			$sql = " SELECT idUser, userName, userPassword, userEmail FROM {$this->table_name} WHERE idUser = {$idUser}";
+			$sql = " SELECT idUser, userName, userPassword, userEmail FROM {$this->table_name} WHERE idUser = :idUser";
 			$stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':idUser', $idUser,PDO::PARAM_INT);
 			$stmt->execute();
@@ -103,7 +102,7 @@ class User {
 
     public function deleteUser($idUser) {
 		try {
-			$sql ="DELETE FROM {$this->table_name} WHERE idUser = {$idUser}";
+			$sql ="DELETE FROM {$this->table_name} WHERE idUser = :idUser";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->bindValue(':idUser', $idUser,PDO::PARAM_INT);
 			$stmt->execute();

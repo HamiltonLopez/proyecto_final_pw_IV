@@ -32,8 +32,8 @@ class Carrito {
 				$stmt = $this->pdo->prepare($sql);
 				$stmt->bindValue(':idReloj', $idReloj,PDO::PARAM_INT);
 				$stmt->bindValue(':cantidadRelojes', $cantidadRelojes,PDO::PARAM_INT);
-
 				$stmt->execute();
+				echo('El reloj seleccionado ha sido añadido al carrito');
 			}
 		catch(PDOException $e) {
 			throw new Exception("Error trying to add record to {$this->table_name} table: ".$e->getMessage());
@@ -107,8 +107,8 @@ class Carrito {
             }
             catch(PDOException $e) {
                 throw new Exception("Error trying to update record (id): {$idCarrito} on {$this->table_name} table. ".$e->getMessage());
-              }
-        }
+            }
+        
     }
 
 
