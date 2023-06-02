@@ -34,15 +34,16 @@ $registros = $reloj->getByType(2); ?>
           <p>Tipo : <?php echo $row['nombreTipo']; ?></p>
           <p>$ <?php echo $row['precioReloj']; ?></p>
           </div>
-          <a href="#" class="btn btn-primary d-flex justify-content-center ">Añadir   <i class="bi bi-cart3"></i></a>
-         
+          <div class="d-flex justify-content-center">
+          <input type="button" value="Añadir al carrito" class="btn btn-primary d-flex justify-content-center" onClick="añadir_producto(<?php $row['idReloj']; ?>);">
         </div>
       </div>
     </div>
-    <?php
-                }
+  </div>
+  <?php
+      }
                 
-              }
-            ?>
+    }
+  ?>
   </div>
 </div>
