@@ -102,6 +102,7 @@ class Venta {
 
 			$sql = " UPDATE {$this->table_name} SET totalVenta = :totalVenta WHERE idVenta = :idVenta";
 			$stmt->bindValue(':totalVenta', $totalVenta, PDO::PARAM_DOUBLE);
+			$stmt->bindValue(':idVenta', $idVenta, PDO::PARAM_INT);
 			$stmt->execute();
 		}
 		catch(PDOException $e) {
