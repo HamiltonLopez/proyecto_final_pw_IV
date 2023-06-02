@@ -40,6 +40,24 @@ class Carrito {
 		}
 	}
 
+    public function getAll($orderByDesc = true) {		
+		
+		$result = array();
+		$orderBy = $orderByDesc?'DESC':'ASC';
+
+		try {
+			$sql = "SELECT idCarrito, idReloj, cantidadRelojes FROM {$this->table_name} ORDER BY {$orderBy}";
+			$stmt = $this->pdo->prepare($sql);
+			$stmt->execute();
+			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $e) {
+			throw new Exception("Error trying to get records from {$this->table_name} table: ".$e->getMessage());
+		}
+
+		return $result;
+	}
+
     public function getProduct($idCarrito) {		
 		
 		$result = array();
