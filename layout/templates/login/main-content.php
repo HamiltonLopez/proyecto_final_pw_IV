@@ -1,3 +1,14 @@
+<?php
+ require_once ($BASE_ROOT_FOLDER_PATH.'configs/database.php');
+ require_once($BASE_ROOT_FOLDER_PATH.'classes/User.php');
+
+ $user = new User();
+
+ $registros = $user->getAll();
+
+
+  ?>
+ 
 <div class="container">
 <div class ="row">
 	<div class="col-md-6 mx-auto p-0">
@@ -65,7 +76,72 @@
 			</div>
 		</div>
 	</div>
-</div>   
+</div>  
+<div class="row align-items-center">
+      <div class="col-12 text-center">
+        <span class="fw-bolder fs-3">CRUD RELOJ</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="span12">&nbsp;</div>
+    </div>
+
+   
+    <div class="row">
+      <div class="span12">&nbsp;</div>
+    </div>
+    <div class="row align-items-center" id="show-content">
+      <div class="col-12 text-center">
+          <span class="fs-4">Tabla de presentación de datos</span>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle" id="edit-table">
+          <thead class="table-light">
+       
+                <th>ID</th>
+                <th>UserName</th>
+                <th>UserPassword</th>
+                <th>UserEmail</th>
+                
+                <th>Acciones</th>
+          </thead>
+          <tbody>
+            <?php
+              if(count($registros) < 1){
+            ?>
+              <tr>
+                <td colspan="7">No hay registros</td>
+              </tr>
+            <?php
+              } else {
+
+                foreach($registros as $index => $fila) {
+            ?>
+                <tr>
+                  
+                  <td><?php echo $fila['idUser']?></td>
+                  <td><?php echo $fila['userName']?></td>
+                  <td><?php echo $fila['userPassword']?></td>
+                  <td><?php echo $fila['userEmail']?></td>
+               
+               
+
+                  <td>
+                    
+                      
+                  <input class ="button-edit" type="button" value="Editar" onClick="editar_registro(<?php echo $fila['idReloj']; ?>);">
+                  <input class ="button-delete" type="button" value="Borrar" onClick="borrar_registro(<?php echo $fila['idReloj']; ?>);">
+                </td>
+                </tr>
+            <?php
+                }
+              }
+            ?>
+          </tbody>
+        </table>
+      </div>    
+    </div>
 
 </div>
 </div>

@@ -45,10 +45,10 @@ class User {
     public function getAll($orderByDesc = true) {		
 		
 		$result = array();
-		$orderBy = $orderByDesc?'DESC':'ASC';
+		
 
 		try {
-			$sql = " SELECT idUser, userName, userPassword, userEmail FROM {$this->table_name} ORDER BY {$orderBy}";
+			$sql = " SELECT idUser, userName, userPassword, userEmail FROM {$this->table_name} ";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
