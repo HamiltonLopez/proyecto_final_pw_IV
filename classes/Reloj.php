@@ -24,17 +24,29 @@ class Reloj {
 		$this->pdo = null; //Se destruye la conexíon a la base de datos creada en el constructor
 	}
 
-	public function save( $nombreReloj, $modeloReloj, $idReloj, $idTipoReloj = 1, $precioReloj) {
+	public function save(  $idReloj,$nombreReloj, $modeloReloj, $idTipoReloj, $precioReloj) {
 		
 		try {
-				$sql = "INSERT INTO {$this->table_name} VALUES ({$nombreReloj}, {$modeloReloj}, {$idReloj}, {$idTipoReloj}, {$precioReloj});";
+			/*
+				$sql = "INSERT INTO {$this->table_name} VALUES ({$idReloj},{$nombreReloj} , {$modeloReloj}, {$idTipoReloj}, {$precioReloj});";
 
 				$stmt = $this->pdo->prepare($sql);
+				$stmt->bindValue(':idReloj', $idReloj,PDO::PARAM_INT);
 				$stmt->bindValue(':nombreReloj', $nombreReloj,PDO::PARAM_STR);
 				$stmt->bindValue(':modeloReloj', $modeloReloj,PDO::PARAM_STR);
+				$stmt->bindValue(':tipoReloj', $idTipoReloj,PDO::PARAM_INT);
+				$stmt->bindValue(':precioReloj', $precioReloj,PDO::PARAM_INT);
+
+				$stmt->execute();*/
+				$sql = 'INSERT INTO `'.$this->table_name.'` SET `idReloj` = :idReloj, `nombreReloj` = :nombreReloj, `modeloReloj` = :modeloReloj, `tipoReloj` = :tipoReloj, `precioReloj` = :precioReloj';
+
+				$stmt = $this->pdo->prepare($sql);
 				$stmt->bindValue(':idReloj', $idReloj,PDO::PARAM_INT);
-				$stmt->bindValue(':idTipoReloj', $idTipoReloj,PDO::PARAM_STR);
-				$stmt->bindValue(':precioReloj', $precioReloj,PDO::PARAM_DOUBLE);
+				$stmt->bindValue(':nombreReloj', $nombreReloj,PDO::PARAM_STR);
+				$stmt->bindValue(':modeloReloj', $modeloReloj,PDO::PARAM_STR);
+				$stmt->bindValue(':tipoReloj', $idTipoReloj,PDO::PARAM_INT);
+				$stmt->bindValue(':precioReloj', $precioReloj,PDO::PARAM_INT);
+			
 
 				$stmt->execute();
 			}
@@ -49,7 +61,9 @@ class Reloj {
 		$orderBy = $orderByDesc?'DESC':'ASC';
 
 		try {
-			$sql = "SELECT idReloj, nombreReloj, modeloReloj, idTipoReloj, precioReloj FROM {$this->table_name} ORDER BY {$orderBy}";
+			$sql = " SELECT p.*, d.nombreTipo FROM {$this->table_name} as p INNER JOIN tipoReloj as d ON p.tipoReloj = d.idTipo";
+			//$sql = " SELECT d.nombreReloj , t.nombretipo FROM {$this->table_name}  INNER JOIN tiporeloj p  ON p.idtipoReloj = d.tiporeloj";
+			//$sql = "SELECT * FROM {$this->table_name}";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -66,9 +80,10 @@ class Reloj {
 		$result = array();
 
 		try {
-			$sql = "SELECT idReloj, nombreReloj, modeloReloj, idTipoReloj, precioReloj FROM {$this->table_name} WHERE idReloj = {$id}";
+			//$sql = " SELECT p.*, d.nombreTipo FROM {$this->table_name} as p INNER JOIN tipoReloj as d ON p.tipoReloj = d.idTipo WHERE idReloj = {$id}";
+		
+			$sql = "SELECT *  FROM {$this->table_name} WHERE idReloj = {$id}";
 			$stmt = $this->pdo->prepare($sql);
-            $stmt->bindValue(':id', $id,PDO::PARAM_INT);
 			$stmt->execute();
 			$result = $stmt->fetch(PDO::FETCH_ASSOC);
 		}
@@ -83,7 +98,8 @@ class Reloj {
 		$result = array();
 
 		try {
-			$sql = " SELECT idReloj, nombreReloj, modeloReloj, idTipoReloj, precioReloj FROM {$this->table_name} WHERE idTipoReloj = {$idTipoReloj}";
+			$sql = " SELECT p.*, d.nombreTipo FROM {$this->table_name} as p INNER JOIN tipoReloj as d ON p.tipoReloj = d.idTipo WHERE d.idTipo = {$idTipoReloj}";
+			//$sql = " SELECT * FROM {$this->table_name} WHERE idTipoReloj = {$idTipoReloj}";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -97,7 +113,7 @@ class Reloj {
 
 	public function delete($id) {
 		try {
-			$sql ="DELETE FROM {$this->table_name} WHERE idReloj = {$id}";
+			$sql ='DELETE FROM '.$this->table_name.' WHERE `idReloj` = :id';
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->bindValue(':id', $id,PDO::PARAM_INT);
 			$stmt->execute();
@@ -113,19 +129,21 @@ class Reloj {
   public function update( $idReloj, $nombreReloj, $modeloReloj, $idTipoReloj, $precioReloj) {
 		
     try {
-			$sql = "UPDATE {$this->table_name} SET nombreReloj = {$nombreReloj}, modeloReloj = {$modeloReloj}, idTipoReloj ={$idTipoReloj}, precioReloj = {$precioReloj} WHERE idReloj = {$idReloj}";
+		$sql = 'UPDATE `'.$this->table_name.'` SET `idReloj` = :idReloj, `nombreReloj` = :nombreReloj, `modeloReloj` = :modeloReloj, `tipoReloj` = :tipoReloj, `precioReloj` = :precioReloj ';
+		//WHERE `idReloj` = :idReloj
+		$sql .= '  WHERE `idReloj` = :idReloj';
+			//$sql = "UPDATE {$this->table_name} SET nombreReloj = {$nombreReloj}, modeloReloj = {$modeloReloj}, tipoReloj ={$idTipoReloj}, precioReloj = {$precioReloj} WHERE idReloj = {$idReloj}";
 
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->bindValue(':nombreReloj', $nombreReloj,PDO::PARAM_STR);
 			$stmt->bindValue(':modeloReloj', $modeloReloj,PDO::PARAM_STR);
-			$stmt->bindValue(':idTipoReloj', $idTipoReloj,PDO::PARAM_STR);
-			$stmt->bindValue(':precioReloj', $precioReloj,PDO::PARAM_DOUBLE);
-
-            $stmt->bindValue(':id', $id,PDO::PARAM_INT);
+			$stmt->bindValue(':tipoReloj', $idTipoReloj,PDO::PARAM_INT);
+			$stmt->bindValue(':precioReloj', $precioReloj,PDO::PARAM_INT);
+            $stmt->bindValue(':idReloj', $idReloj,PDO::PARAM_INT);
 			$stmt->execute();
 		}
 		catch(PDOException $e) {
-			throw new Exception("Error trying to update record (id): {$id} on {$this->table_name} table. ".$e->getMessage());
+			throw new Exception("Error trying to update record (id): {$idReloj} on {$this->table_name} table. ".$e->getMessage());
 		  }
 	}
 }

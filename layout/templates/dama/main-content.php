@@ -1,2 +1,48 @@
+<?php
+require_once ($BASE_ROOT_FOLDER_PATH.'configs/database.php');
+require_once($BASE_ROOT_FOLDER_PATH.'classes/Reloj.php');
+$reloj = new Reloj();
+$registros = $reloj->getByType(2); ?>
+<div class="man container">
+  <div
+    class="cards row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4"
+  >
+    <?php
+              if(count($registros) < 1){
+            ?>
+            <h1>No hay relojes</h1>
 
-    <h1 class="text-center">Aqui va el contenido de pagina de dama</h1></div>
+    <?php
+              } else {
+
+                foreach($registros as $index => $row) {
+            ?>
+            <?php
+          
+            $imagen = 'img/relojes/'. $index+1 .'/reloj.png';
+            ?>
+    <div class="clock col d-flex justify-content-center">
+      <div class="card">
+        <img src="<?php echo $imagen; ?>" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title"><?php echo $row['nombreReloj']; ?></h5>
+
+          <div class="text">
+          <p class="card-text">
+          Modelo :<?php echo $row['modeloReloj']; ?>
+          </p>
+          <p>Tipo : <?php echo $row['nombreTipo']; ?></p>
+          <p>$ <?php echo $row['precioReloj']; ?></p>
+          </div>
+          <a href="#" class="btn btn-primary d-flex justify-content-center ">Añadir   <i class="bi bi-cart3"></i></a>
+         
+        </div>
+      </div>
+    </div>
+    <?php
+                }
+                
+              }
+            ?>
+  </div>
+</div>
