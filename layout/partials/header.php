@@ -1,4 +1,5 @@
 <?php
+   require_once ($BASE_ROOT_FOLDER_PATH.'configs/database.php');
   $module = isset($_SESSION['module_name'])?$_SESSION['module_name'].'/':'';
 ?>
 <!DOCTYPE html>
@@ -33,7 +34,7 @@
   <script src="<?php echo $BASE_ROOT_URL_PATH."assets/js/{$module}actions.js"?>"></script>  
 </head>
   <body>
-  <div class="container">
+  <div class="container ">
       <header>
         <div class="head-row">
           <nav id="navbar" class="navbar navbar-expand-lg container">
@@ -53,9 +54,10 @@
                 <span class="navbar-toggler-icon">MENÚ</span>
               </button>
 
-              <div class="collapse navbar-collapse row" id="navbarNav">
               
-                <ul class="navbar-nav row col-10">
+              <div class="collapse navbar-collapse row col-10 " id="navbarNav">
+              
+                <ul class="navbar-nav row col-12">
                   
                   <li class="nav-item col">
                     <a class="nav-link<?php echo $menu['active_home']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=home'?>" href="#">Home</a>

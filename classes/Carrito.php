@@ -107,8 +107,8 @@ class Carrito {
             }
             catch(PDOException $e) {
                 throw new Exception("Error trying to update record (id): {$idCarrito} on {$this->table_name} table. ".$e->getMessage());
-              }
-        }
+            }
+        
     }
 
     public function clearCar() {

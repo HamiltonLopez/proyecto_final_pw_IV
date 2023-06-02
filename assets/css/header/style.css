@@ -2,10 +2,8 @@
 * {
   margin: 0;
   padding: 0;
-  
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-
 }
 
 header {
@@ -26,7 +24,7 @@ header {
   }
   div[class^="head"] {
     padding-top: 2%;
-    padding-bottom: 2%;
+    
   }
   .navbar-nav li a,
   a {
@@ -66,10 +64,10 @@ header {
     transform-origin: left center;
     transition: transform 0.4s ease-in-out;
   }
-  #navbar{
+ /* #navbar{
     position: fixed;
     background-color: rgb(0, 0, 0);
-}
+}*/
 .active{
   color: rgb(255, 255, 255);
   font-weight: bold;
