@@ -12,8 +12,8 @@
 
        
 				<div class="group">
-					<label for="user" class="label">Username</label>
-					<input id="user" type="text" class="input"  placeholder="Enter your username" required>
+					<label for="user" class="label">Username/Email</label>
+					<input id="user" type="text" class="input"  placeholder="Enter your username/email" required>
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Password</label>
