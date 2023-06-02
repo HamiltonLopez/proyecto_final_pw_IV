@@ -46,7 +46,11 @@ class Carrito {
 		$orderBy = $orderByDesc?'DESC':'ASC';
 
 		try {
-			$sql = "SELECT idCarrito, idReloj, cantidadRelojes FROM {$this->table_name} ORDER BY {$orderBy}";
+			$sql = "SELECT ct.idCarrito, rl.nombreReloj, tr.nombreTipo, rl.modeloReloj, ct.cantidadRelojes 
+			FROM {$this->table_name}  AS ct 
+			JOIN reloj AS rl ON ct.idReloj = rl.idReloj
+			JOIN tipoReloj AS tr ON rl.idTipoReloj = tr.idTipo 
+			ORDER BY {$orderBy}";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
