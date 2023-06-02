@@ -32,51 +32,13 @@ class DetalleVenta {
 				$stmt = $this->pdo->prepare($sql);
 				$stmt->bindValue(':idVenta', $idVenta,PDO::PARAM_INT);
                 $stmt->bindValue(':idReloj', $idReloj,PDO::PARAM_INT);
-				$stmt->bindValue(':cantidadRelojes', $cantidadRelojes ,PDO::PARAM_STR);
+				$stmt->bindValue(':cantidadRelojes', $cantidadRelojes ,PDO::PARAM_INT);
 
 				$stmt->execute();
 			}
 		catch(PDOException $e) {
 			throw new Exception("Error trying to add record to {$this->table_name} table: ".$e->getMessage());
 		}
-	}
-
-    public function getById($idVenta) {		
-		
-		$result = array();
-
-		try {
-			$sql = " SELECT idDetalleVenta, idVenta, idReloj, cantidadRelojes
-            FROM {$this->table_name} WHERE idVenta = {$idVenta}";
-			$stmt = $this->pdo->prepare($sql);
-            $stmt->bindValue(':idVenta', $idVenta,PDO::PARAM_INT);
-			$stmt->execute();
-			$result = $stmt->fetch(PDO::FETCH_ASSOC);
-		}
-		catch(PDOException $e) {
-			throw new Exception("Error trying to get records from {$this->table_name} table: ".$e->getMessage());
-		}
-
-		return $result;
-	}
-
-    public function getAll($orderByDesc = true) {		
-		
-		$result = array();
-		$orderBy = $orderByDesc?'DESC':'ASC';
-
-		try {
-			$sql = " SELECT idDetalleVenta, idVenta, idReloj, cantidadRelojes
-             FROM {$this->table_name} ORDER BY {$orderBy}";
-			$stmt = $this->pdo->prepare($sql);
-			$stmt->execute();
-			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		}
-		catch(PDOException $e) {
-			throw new Exception("Error trying to get records from {$this->table_name} table: ".$e->getMessage());
-		}
-
-		return $result;
 	}
 }
 ?>
