@@ -5,11 +5,18 @@
   $registros = $carrito->getAll(); //obtenemos todos los registros de la tabla
 ?>
 
-<div class="container">
-    <div class="row align-items-center py-5" id="show-content">
+<div class="container" id="main-content">
+    <div class="row align-items-center">
       <div class="col-12 text-center">
-        <h1 class="py-4 text-white pb-3">CARRITO DE COMPRAS</h1>
+        <span class="fw-bolder fs-3">CARRITO DE COMPRAS</span>
       </div>
+    </div>
+
+    <div class="row">
+      <div class="span12">&nbsp;</div>
+    </div>
+
+    <div class="row align-items-center" id="show-content">
       <div class="table-responsive">
         <table class="table table-bordered align-middle" id="edit-table">
           <thead class="table-light">
@@ -39,19 +46,19 @@
                   <td><?php echo $fila['modeloReloj']?></td>
                   <td><?php echo $fila['cantidadRelojes']?></td>
                   <td>
-                      <input type="button" value="Borrar" onClick="borrar_registro(<?php echo $fila['idCarrito']; ?>);">
-                      <input type="button" value="Editar" onClick="editar_registro(<?php echo $fila['idCarrito']; ?>);">
+                      <input type="button" class="button-delete" value="Borrar" onClick="borrar_registro(<?php echo $fila['idCarrito']; ?>);">
+                      <input type="button" class="button-edit" value="Editar" onClick="editar_registro(<?php echo $fila['idCarrito']; ?>);">
                   </td>
                 </tr>
             <?php
                 }
               }
             ?>
-            <div>
-              <input type="button" value="Limpiar Carrito" onClick="limpiar_carrito();">
-            </div>
           </tbody>
         </table>
       </div>    
+      <div class="col-12 text-center" id="action-button-container">
+        <input type="button" class="btn-clean" value="Limpiar Carrito" onClick="limpiar_carrito();">
+      </div>
     </div>
 </div>

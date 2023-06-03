@@ -9,5 +9,5 @@ function editar_registro(idCarrito){
 }
 
 function limpiar_carrito(){
-    location.replace(BASE_ROOT_URL_PATH+'controller/Carrito/add.php');
+    location.replace(BASE_ROOT_URL_PATH+'controller/Carrito/clearCar.php');
 }
