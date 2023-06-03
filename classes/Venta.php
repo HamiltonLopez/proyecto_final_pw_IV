@@ -89,17 +89,17 @@ class Venta {
 	}
 
 	public function calcularTotal($idVenta) {		
-		/*
+		
 		$totalVenta = 0.0;
 
 		try {
-			$sql = " SELECT SUM(rl.precio) AS totalVenta FROM {detalleVenta} dv JOIN {reloj} rl ON dv.idReloj = rl.idReloj 
-			WHERE dv.idVenta = :idVenta";
+			$sql = "SELECT SUM(rl.precio * dv.cantidadRelojes) AS totalVenta FROM {detalleVenta} AS dv 
+			JOIN {reloj}  AS rl ON dv.idReloj = rl.idReloj WHERE dv.idVenta = :idVenta";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->bindValue(':idVenta', $idVenta, PDO::PARAM_INT);
-			$totalVenta = SUM(rl.precio);
+			$totalVenta = totalVenta;
 
-			$sql = " UPDATE {$this->table_name} SET totalVenta = :totalVenta WHERE idVenta = :idVenta";
+			$sql = "UPDATE {$this->table_name} SET totalVenta = :totalVenta WHERE idVenta = :idVenta";
 			$stmt->bindValue(':totalVenta', $totalVenta, PDO::PARAM_INT);
 			$stmt->bindValue(':idVenta', $idVenta, PDO::PARAM_INT);
 			$stmt->execute();
@@ -107,7 +107,6 @@ class Venta {
 		catch(PDOException $e) {
 			throw new Exception("Error trying to get records from {detalleVenta} table: ".$e->getMessage());
 		}
-*/
 	}
 
 	public function anularVenta($idVenta) {

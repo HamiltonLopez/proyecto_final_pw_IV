@@ -3,7 +3,6 @@
   require_once ($BASE_ROOT_FOLDER_PATH.'configs/database.php');
   require_once($BASE_ROOT_FOLDER_PATH.'classes/User.php');
 
-  
   if(!empty($_POST['userName'])){
     
     $user = new User();
