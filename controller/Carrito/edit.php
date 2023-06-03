@@ -17,9 +17,9 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <title>Edición y guardado de datos de forma dinámica con Javascript y PHP</title>
-  <link rel="stylesheet" href="<?php echo $BASE_ROOT_URL_PATH.'assets/';?>css/bootstrap.min.css">
-  <script src="<?php echo $BASE_ROOT_URL_PATH.'assets/';?>js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="<?php echo $BASE_ROOT_URL_PATH.'assets/';?>css/style.css" />
+  <link rel="stylesheet" href="<?php echo $BASE_ROOT_URL_PATH.'assets/bootstrap/';?>css/bootstrap.min.css">
+  <script src="<?php echo $BASE_ROOT_URL_PATH.'assets/bootstrap/';?>js/bootstrap.min.js"></script>
+ <!--<link rel="stylesheet" href="<?php echo $BASE_ROOT_URL_PATH.'assets/';?>css/style.css" />-->
 </head>
 <body>
   <br>
@@ -55,7 +55,7 @@
       <div class="px-4 py-2 row">
         <label for="tipoReloj" class="col-6 col-form-label fw-bolder">Tipo Reloj</label>
         <div class="col-6">
-          <input type="text" class="form-control" name="tipoReloj" value="<?php echo $datos['tipoReloj'];?>" placeholder="Ingrese nombre" readonly>
+          <input type="text" class="form-control" name="tipoReloj" value="<?php echo $datos['nombreTipo'];?>" placeholder="Ingrese nombre" readonly>
         </div>
       </div>
       <div class="px-4 py-2 row">
@@ -67,7 +67,7 @@
       <div class="px-4 py-2 row">
         <label for="cantidadRelojes" class="col-6 col-form-label fw-bolder">Cantidad Relojes</label>
         <div class="col-6">
-          <input type="number" class="form-control" name="cantidadRelojes" value="<?php echo $datos['cantidadRelojes'];?>" readonly>
+          <input type="number" class="form-control" name="cantidadRelojes" value="<?php echo $datos['cantidadRelojes'];?>" require>
         </div>
       </div>
       <div class="px-4 py-2 row">
