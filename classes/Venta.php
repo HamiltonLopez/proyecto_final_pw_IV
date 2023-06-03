@@ -26,23 +26,22 @@ class Venta {
 		$this->pdo = null; //Se destruye la conexíon a la base de datos creada en el constructor
 	}
 
-    public function crearVenta($idCliente) {
+    public function crearVenta($nombreEmpresa, $telefonoEmpresa, $idCliente, $fechaRealizacionVenta) {
 		
 		try {
 				$sql = 'INSERT INTO `'.$this->table_name.'` SET `estadoVenta` = :estadoVenta,
 				`nombreEmpresa` = :nombreEmpresa, `telefonoEmpresa` = :telefonoEmpresa, `idCliente` = :idCliente, 
                 `fechaRealizacionVenta` = :fechaRealizacionVenta, `totalVenta` = :totalVenta;';
 
-                $fechaActual = date('Y-m-d');
-                $totalVenta = 0,0;
+                $totalVenta = 0.0;
 
 				$stmt = $this->pdo->prepare($sql);
 				$stmt->bindValue(':estadoVenta', 'generada',PDO::PARAM_STR);
-				$stmt->bindValue(':nombreEmpresa', 'TEMPUS FUGIT',PDO::PARAM_STR);
-				$stmt->bindValue(':telefonoEmpresa', '3156263333',PDO::PARAM_STR);
+				$stmt->bindValue(':nombreEmpresa', $nombreEmpresa,PDO::PARAM_STR);
+				$stmt->bindValue(':telefonoEmpresa', $telefonoEmpresa ,PDO::PARAM_STR);
                 $stmt->bindValue(':idCliente', $idCliente ,PDO::PARAM_INT);
-                $stmt->bindValue(':fechaRealizacionVenta', $fechaActual ,PDO::PARAM_STR);
-                $stmt->bindValue(':totalVenta', $totalVenta , PDO::PARAM_DOUBLE);
+                $stmt->bindValue(':fechaRealizacionVenta', $fechaRealizacionVenta ,PDO::PARAM_STR);
+                $stmt->bindValue(':totalVenta', $totalVenta , PDO::PARAM_INT);
 
 				$stmt->execute();
 			}
@@ -57,7 +56,7 @@ class Venta {
 
 		try {
 			$sql = " SELECT idVenta, estadoVenta, nombreEmpresa, telefonoEmpresa, idCliente, fechaRealizacionVenta, 
-			totalVenta FROM {$this->table_name} WHERE idVenta = :idVenta";
+			totalVenta FROM {$this->table_name} AS vt WHERE idVenta = :idVenta";
 			$stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':idVenta', $idVenta,PDO::PARAM_INT);
 			$stmt->execute();
@@ -90,7 +89,7 @@ class Venta {
 	}
 
 	public function calcularTotal($idVenta) {		
-		
+		/*
 		$totalVenta = 0.0;
 
 		try {
@@ -101,14 +100,14 @@ class Venta {
 			$totalVenta = SUM(rl.precio);
 
 			$sql = " UPDATE {$this->table_name} SET totalVenta = :totalVenta WHERE idVenta = :idVenta";
-			$stmt->bindValue(':totalVenta', $totalVenta, PDO::PARAM_DOUBLE);
+			$stmt->bindValue(':totalVenta', $totalVenta, PDO::PARAM_INT);
 			$stmt->bindValue(':idVenta', $idVenta, PDO::PARAM_INT);
 			$stmt->execute();
 		}
 		catch(PDOException $e) {
 			throw new Exception("Error trying to get records from {detalleVenta} table: ".$e->getMessage());
 		}
-
+*/
 	}
 
 	public function anularVenta($idVenta) {
@@ -127,4 +126,3 @@ class Venta {
 
 	}
 
-}
