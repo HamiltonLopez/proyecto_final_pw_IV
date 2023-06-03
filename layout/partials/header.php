@@ -72,7 +72,7 @@
                     <a class="nav-link<?php echo $menu['active_producto']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=producto'?>" href="#">Productos</a>
                   </li>
                   <li class="nav-item col">
-                    <a class="nav-link<?php echo $menu['active_usuario']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=usuarios'?>" href="#">Usuarios</a>
+                    <a class="nav-link<?php echo $menu['active_usuarios']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=usuarios'?>" href="#">Usuarios</a>
                   </li>
                   <li class="nav-item col">
                     <a class="nav-link<?php echo $menu['active_about']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=about'?>" href="#">Nosotros</a>
