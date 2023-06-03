@@ -28,10 +28,10 @@ class User {
 		try {
 				$sql = 'INSERT INTO `'.$this->table_name.'` SET `userName` = :userName, `userPassword` = :userPassword, `userEmail` = :userEmail;';
 
-				$passwordEncrypt = sha1($userPassword);
+				//$passwordEncrypt = sha1($userPassword);
 				$stmt = $this->pdo->prepare($sql);
 				$stmt->bindValue(':userName', $userName,PDO::PARAM_STR);
-				$stmt->bindValue(':userPassword', $passwordEncrypt,PDO::PARAM_INT);
+				$stmt->bindValue(':userPassword', $userPassword,PDO::PARAM_INT);
 				$stmt->bindValue(':userEmail', $userEmail,PDO::PARAM_STR);
 
 				$stmt->execute();
@@ -77,6 +77,7 @@ class User {
 		catch(PDOException $e) {
 			throw new Exception("Error trying to get records from {$this->table_name} table: ".$e->getMessage());
 		}
+		
 
 		return $stmt->rowCount()>0?$result:null;
 
@@ -115,16 +116,18 @@ class User {
 
 	}
 
-    public function updateUser($idUser, $userPassword) {
+    public function updateUser($idUser, $userPassword, $userName, $userEmail) {
 		
         try {
 
-				$passwordEncrypt = sha1($userPassword);
-                $sql = "UPDATE {$this->table_name} SET `userPassword` = :userPassword WHERE `idUser` = :idUser";
+				//$passwordEncrypt = sha1($userPassword);
+                $sql = "UPDATE {$this->table_name} SET `userPassword` = :userPassword , `userName` = :userName, `userEmail` = :userEmail  WHERE `idUser` = :idUser";
     
                 $stmt = $this->pdo->prepare($sql);
-                $stmt->bindValue(':userPassword', $passwordEncrypt,PDO::PARAM_STR);
+                $stmt->bindValue(':userPassword', $userPassword,PDO::PARAM_INT);
                 $stmt->bindValue(':idUser', $idUser,PDO::PARAM_INT);
+				$stmt->bindValue(':userName', $userName,PDO::PARAM_STR);
+				$stmt->bindValue(':userEmail', $userEmail,PDO::PARAM_STR);
                 $stmt->execute();
         }
         catch(PDOException $e) {

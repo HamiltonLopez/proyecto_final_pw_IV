@@ -1,7 +1,8 @@
 <?php
-  require_once ('config.php');
-  require_once ($BASE_ROOT_FOLDER_PATH.'includes/database.php');
-  require($BASE_ROOT_FOLDER_PATH.'classes/User.php');
+  require_once ('../../configs/config.php');
+  require_once ($BASE_ROOT_FOLDER_PATH.'configs/database.php');
+  require_once($BASE_ROOT_FOLDER_PATH.'classes/User.php');
+
   
   if(!empty($_POST['userName'])){
     
@@ -14,7 +15,7 @@
 
       if ($password == $confirmPassword) {
 
-        $user->save($_POST['userName'], $password, $_POST['userEmail']);
+        $user->createUser($_POST['userName'], $_POST['userPassword'], $_POST['userEmail']);
 
       }else {
         echo ("Las contraseñas ingresadas no son iguales, por favor verificar de nuevo.");

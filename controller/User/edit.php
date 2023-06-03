@@ -1,8 +1,8 @@
 <?php
-    require_once ('config.php');
-    require_once ($BASE_ROOT_FOLDER_PATH.'includes/database.php');
+    require_once ('../../configs/config.php');
+    require_once ($BASE_ROOT_FOLDER_PATH.'configs/database.php');
     require($BASE_ROOT_FOLDER_PATH.'classes/User.php');
-    $idUser = $_GET['idUser'];
+    $idUser = $_GET['id'];
 
     $user = new User();
     $datos = $user->getById($idUser);
@@ -17,8 +17,8 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <title>Edicion del usuario</title>
-  <link rel="stylesheet" href="<?php echo $BASE_ROOT_URL_PATH.'assets/';?>css/bootstrap.min.css">
-  <script src="<?php echo $BASE_ROOT_URL_PATH.'assets/';?>js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="<?php echo $BASE_ROOT_URL_PATH.'assets/bootstrap/';?>css/bootstrap.min.css">
+  <script src="<?php echo $BASE_ROOT_URL_PATH.'assets/bootstrap/';?>js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="<?php echo $BASE_ROOT_URL_PATH.'assets/';?>css/style.css" />
 </head>
 <body>
@@ -44,12 +44,12 @@
       <div class="span12">&nbsp;</div>
     </div>
 
-    <form class="row g-3 align-items-center" action="<?php echo $BASE_ROOT_URL_PATH;?>includes/update.php" method="post">
+    <form class="row g-3 align-items-center" action="<?php echo $BASE_ROOT_URL_PATH;?>controller/User/update.php" method="post">
       <input type="hidden" name="id" value="<?php echo $datos['idUser'];?>">
       <div class="px-4 py-2 row">
         <label for="name" class="col-6 col-form-label fw-bolder">UserName</label>
         <div class="col-6">
-          <input type="text" class="form-control" name="userName" value="<?php echo $datos['userName'];?>" readonly>
+          <input type="text" class="form-control" name="userName" value="<?php echo $datos['userName'];?>" require>
         </div>
       </div>
       <div class="px-4 py-2 row">

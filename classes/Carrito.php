@@ -111,7 +111,7 @@ class Carrito {
         
     }
 
-
+}
    /* public function clearCar() {
         
         try {

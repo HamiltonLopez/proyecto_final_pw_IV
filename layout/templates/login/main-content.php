@@ -9,7 +9,7 @@
 
   ?>
  
-<div class="container">
+<div class="container" >
 <div class ="row">
 	<div class="col-md-6 mx-auto p-0">
 	
@@ -39,9 +39,7 @@
 				</div>
         </form>
 				<div class="hr"></div>
-				<div class="foot">
-					<a href="#">Forgot Password?</a>
-				</div>
+				
 			</div>
 			<div class="sign-up-form">
         <form action="<?php echo $BASE_ROOT_URL_PATH;?>controller/User/save.php" method="post">
@@ -68,14 +66,18 @@
 				</div>
         </form>
 				<div class="hr"></div>
-				<div class="foot">
-					<label for="tab-1">Already Member?</label>
-				</div>
+				
 			</div>
 		</div>
 	</div>
 </div>  
-<div class="row align-items-center">
+   
+    </div>
+
+</div>
+
+<div id="edit-table">
+	<div class="row align-items-center" id="main-content">
       <div class="col-12 text-center">
         <span class="fw-bolder fs-3">CRUD RELOJ</span>
       </div>
@@ -93,7 +95,7 @@
       <div class="col-12 text-center">
           <span class="fs-4">Tabla de presentación de datos</span>
       </div>
-      <div class="table-responsive">
+      <div class="table-responsive " id="main-content">
         <table class="table table-bordered align-middle" id="edit-table">
           <thead class="table-light">
        
@@ -128,8 +130,8 @@
                   <td>
                     
                       
-                  <input class ="button-edit" type="button" value="Editar" onClick="editar_registro(<?php echo $fila['idReloj']; ?>);">
-                  <input class ="button-delete" type="button" value="Borrar" onClick="borrar_registro(<?php echo $fila['idReloj']; ?>);">
+                  <input class ="button-edit" type="button" value="Editar" onClick="editar_registro(<?php echo $fila['idUser']; ?>);">
+                  <input class ="button-delete" type="button" value="Borrar" onClick="borrar_registro(<?php echo $fila['idUser']; ?>);">
                 </td>
                 </tr>
             <?php
@@ -138,9 +140,7 @@
             ?>
           </tbody>
         </table>
-      </div>    
-    </div>
+      </div> </div>
 
-</div>
 </div>
 </div>
