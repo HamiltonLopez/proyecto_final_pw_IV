@@ -16,7 +16,7 @@ class User {
         global $db_host, $db_name, $db_user, $db_pwd;
         $this->pdo = new pdo('mysql:host='.$db_host.';dbname='.$db_name, $db_user, $db_pwd); //Se crea una nueva conexíon a la base de datos
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $this->table_name = 'user';
+        $this->table_name = 'usuario';
     }
 
     function __destruct() {
@@ -47,7 +47,7 @@ class User {
 		$orderBy = $orderByDesc?'DESC':'ASC';
 
 		try {
-			$sql = " SELECT idUser, userName, userPassword, userEmail FROM {$this->table_name} ORDER BY {$orderBy}";
+			$sql = " SELECT idUser, userName, userPassword, userEmail FROM {$this->table_name}";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
