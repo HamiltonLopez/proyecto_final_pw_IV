@@ -1,6 +1,6 @@
 <?php
-    require_once ('config.php');
-    require_once ($BASE_ROOT_FOLDER_PATH.'includes/database.php');
+    require_once ('../../configs/config.php');
+    require_once ($BASE_ROOT_FOLDER_PATH.'configs/database.php');
     require($BASE_ROOT_FOLDER_PATH.'classes/User.php');
     $idUser = $_GET['idUser'];
 

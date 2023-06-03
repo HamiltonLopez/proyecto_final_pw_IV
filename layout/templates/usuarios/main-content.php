@@ -47,8 +47,8 @@
               <thead class="table-light" id="top">
               
                 <th>Nombre</th>
-                <th>ID</th>
                 <th>Password</th>
+                <th>Confirm Password</th>
                 <th>Email</th>
          
               </thead>

@@ -23,15 +23,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
       input0.required = true; 
       td0.append(input0);
       tr.append(td0);
-  
-      let td1 = document.createElement("td");
-      let input1 = document.createElement('input');
-      input1.setAttribute('id','id'+i);
-      input1.setAttribute('name','ids[]');
-      input1.required = true; 
-      td1.append(input1);
-      tr.append(td1);
-  
+
+      let td4 = document.createElement("td");
+      let input4 = document.createElement('input');
+      input4.setAttribute('id','password'+i);
+      input4.setAttribute('name','passwords[]');
+      td4.append(input4);
+      tr.append(td4);
+
+      let td5 = document.createElement("td");
+      let input5 = document.createElement('input');
+      input5.setAttribute('id','confirmPassword'+i);
+      input5.setAttribute('name','confirmPasswords[]');
+      td5.append(input5);
+      tr.append(td5);
+
       let td3 = document.createElement("td");
       let input3 = document.createElement('input');
       input3.setAttribute('id','email'+i);
@@ -40,12 +46,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       td3.append(input3);
       tr.append(td3);
 
-      let td4 = document.createElement("td");
-      let input4 = document.createElement('input');
-      input4.setAttribute('id','password'+i);
-      input4.setAttribute('name','passwords[]');
-      td4.append(input3);
-      tr.append(td4);
+      tBody.append(tr);
     }
   
     add_element_to_table('edit',tBody);
@@ -61,6 +62,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
   
   function add_element_to_table(type, newTBody){
+    console.log(type);
+    console.log(newTBody);
     let table = document.getElementById(type+'-table');
     let tBody = table.getElementsByTagName('tbody')[0];
     tBody.parentNode.removeChild(tBody);
@@ -68,9 +71,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
   
   function add_button_create_read_only_table(){
-    let actionButton = document.getElementById('action-button');
-    actionButton.setAttribute('type','button');
-    actionButton.setAttribute('value','Crear Nueva Tabla');
+    let actionButton = document.getElementById('btn-create');
     actionButton.addEventListener("click", create_read_only_table);
   }
   

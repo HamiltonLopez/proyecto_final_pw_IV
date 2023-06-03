@@ -1,27 +1,30 @@
 <?php
-  require_once ('config.php');
-  require_once ($BASE_ROOT_FOLDER_PATH.'includes/database.php');
+  require_once ('../../configs/config.php');
+  require_once ($BASE_ROOT_FOLDER_PATH.'configs/database.php');
   require($BASE_ROOT_FOLDER_PATH.'classes/User.php');
   
-  if(!empty($_POST['userName'])){
+  if(!empty($_POST['usernames'] && $_POST['passwords'] && $_POST['confirmPasswords'] && $_POST['emails'])){
     
     $user = new User();
 
-    if(!empty($_POST['userName']) && $_POST['userPassword'] && $_POST['confirmPassword'] && $_POST['userEmail']){
+    $num_rows = count($_POST['usernames']);
 
-      $password = $_POST['userPassword'];
-      $confirmPassword = $_POST['confirmPassword'];
+    for($i = 0; $i < $num_rows; $i++){   
+
+      $password = $_POST['passwords'];
+      $confirmPassword = $_POST['confirmPasswords'];
 
       if ($password == $confirmPassword) {
 
-        $user->save($_POST['userName'], $password, $_POST['userEmail']);
+        $user->save($_POST['usernames'], $password, $_POST['emails']);
 
       }else {
         echo ("Las contraseñas ingresadas no son iguales, por favor verificar de nuevo.");
       }
-    }else{
-      echo ("Por favor, completar todos los campos");
     }
+
+  }else{
+    echo ("Por favor, completar todos los campos");
   }
 
   header('Location: '.$BASE_ROOT_URL_PATH); // Forma de redireccionar hacia la pagina principal (index.php)
