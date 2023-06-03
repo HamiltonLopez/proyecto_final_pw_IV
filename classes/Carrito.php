@@ -115,7 +115,8 @@ class Carrito {
         
     }
 
-    public function clearCar() {
+}
+   /* public function clearCar() {
         
         try {
             $sql = "TRUNCATE TABLE {$this->table_name};";
@@ -126,5 +127,4 @@ class Carrito {
         catch(PDOException $e) {
             throw new Exception("Error trying to delete {$this->table_name} table. ".$e->getMessage());
           }
-    }
-}
+    }*/

@@ -1,12 +1,14 @@
 <?php
-    require_once ('config.php');
-    require_once ($BASE_ROOT_FOLDER_PATH.'includes/database.php');
-    require($BASE_ROOT_FOLDER_PATH.'classes/User.php');
-    $idUser = $_GET['idUser'];
+    require_once ('../../configs/database.php');
+    require_once('../../classes/User.php');
+
+ 
+   
+    $idUser = $_GET['id'];
 
     $user = new User();
 
-    $user->delete($idUser);
+    $user->deleteUser($idUser);
 
-    header('Location: '.$BASE_ROOT_URL_PATH); // Forma de redireccionar hacia la pagina principal (index.php)
+    header('Location: '.'../../index.php'); // Forma de redireccionar hacia la pagina principal (index.php)
     exit;
