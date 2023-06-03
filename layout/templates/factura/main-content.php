@@ -2,10 +2,13 @@
     require_once ('../../configs/config.php');
     require_once ($BASE_ROOT_FOLDER_PATH.'configs/database.php');
     require_once($BASE_ROOT_FOLDER_PATH.'classes/Venta.php');
+    require_once($BASE_ROOT_FOLDER_PATH.'classes/DetalleVenta.php');
     $id = $_GET['id'];
 
     $venta = new Venta();
+    $detalle = new DetalleVenta();
     $datos = $venta->getById($id);
+    $datosReloj = $detalle->getRelojById($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,6 +71,18 @@
         <label for="fechaRealizacionVenta" class="col-6 col-form-label fw-bolder">Fecha de venta</label>
         <div class="col-6">
           <input id="fechaRealizacionVenta" type="number" class="bg-trasnparent border border-0" name="fechaRealizacionVenta" value="<?php echo $datos['fechaRealizacionVenta'];?>" disabled>
+        </div>
+      </div>
+      <div class="px-4 py-2 row">
+        <label for="relojVenta" class="col-6 col-form-label fw-bolder">Reloj</label>
+        <div class="col-6">
+          <input id="relojVenta" type="number" class="bg-trasnparent border border-0" name="relojVenta" value="<?php echo $datosReloj['nombreReloj'];?>" disabled>
+        </div>
+      </div>
+      <div class="px-4 py-2 row">
+        <label for="cantidadRelojVenta" class="col-6 col-form-label fw-bolder">Cantidad de Relojes</label>
+        <div class="col-6">
+          <input id="cantidadRelojVenta" type="number" class="bg-trasnparent border border-0" name="cantidadRelojVenta" value="<?php echo $datosReloj['cantidadRelojes'];?>" disabled>
         </div>
       </div>
       <div class="px-4 py-2 row">

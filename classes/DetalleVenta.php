@@ -40,5 +40,22 @@ class DetalleVenta {
 			throw new Exception("Error trying to add record to {$this->table_name} table: ".$e->getMessage());
 		}
 	}
+
+    public function getRelojById($id){
+        try {
+            $sql = "SELECT reloj.nombreReloj, cantidadRelojes, FROM {$this->table_name} 
+                JOIN reloj ON reloj.idReloj = idReloj;
+            ";
+
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        catch(PDOException $e) {
+            throw new Exception("Error trying to add record to {$this->table_name} table: ".$e->getMessage());
+        }
+
+        return $result;
+    }
 }
 ?>
