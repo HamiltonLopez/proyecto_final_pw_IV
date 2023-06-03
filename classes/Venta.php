@@ -26,22 +26,21 @@ class Venta {
 		$this->pdo = null; //Se destruye la conexíon a la base de datos creada en el constructor
 	}
 
-    public function crearVenta($idCliente) {
+    public function crearVenta($nombreEmpresa, $telefonoEmpresa, $idCliente, $fechaRealizacionVenta) {
 		
 		try {
 				$sql = 'INSERT INTO `'.$this->table_name.'` SET `estadoVenta` = :estadoVenta,
 				`nombreEmpresa` = :nombreEmpresa, `telefonoEmpresa` = :telefonoEmpresa, `idCliente` = :idCliente, 
                 `fechaRealizacionVenta` = :fechaRealizacionVenta, `totalVenta` = :totalVenta;';
 
-                $fechaActual = date('Y-m-d');
                 $totalVenta = 0.0;
 
 				$stmt = $this->pdo->prepare($sql);
 				$stmt->bindValue(':estadoVenta', 'generada',PDO::PARAM_STR);
-				$stmt->bindValue(':nombreEmpresa', 'TEMPUS FUGIT',PDO::PARAM_STR);
-				$stmt->bindValue(':telefonoEmpresa', '3156263333',PDO::PARAM_STR);
+				$stmt->bindValue(':nombreEmpresa', $nombreEmpresa,PDO::PARAM_STR);
+				$stmt->bindValue(':telefonoEmpresa', $telefonoEmpresa ,PDO::PARAM_STR);
                 $stmt->bindValue(':idCliente', $idCliente ,PDO::PARAM_INT);
-                $stmt->bindValue(':fechaRealizacionVenta', $fechaActual ,PDO::PARAM_STR);
+                $stmt->bindValue(':fechaRealizacionVenta', $fechaRealizacionVenta ,PDO::PARAM_STR);
                 $stmt->bindValue(':totalVenta', $totalVenta , PDO::PARAM_INT);
 
 				$stmt->execute();
@@ -57,7 +56,7 @@ class Venta {
 
 		try {
 			$sql = " SELECT idVenta, estadoVenta, nombreEmpresa, telefonoEmpresa, idCliente, fechaRealizacionVenta, 
-			totalVenta FROM {$this->table_name} WHERE idVenta = :idVenta";
+			totalVenta FROM {$this->table_name} AS vt WHERE idVenta = :idVenta";
 			$stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':idVenta', $idVenta,PDO::PARAM_INT);
 			$stmt->execute();
