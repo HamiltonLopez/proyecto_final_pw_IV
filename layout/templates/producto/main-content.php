@@ -55,7 +55,7 @@
               <thead class="table-light" id="top">
               
                 <th>Nombre</th>
-                <th>ID</th>
+               
                 <th>Tipo Reloj</th>
                 <th>Modelo</th>
                 <th>Precio</th>

@@ -24,24 +24,14 @@ class Reloj {
 		$this->pdo = null; //Se destruye la conexíon a la base de datos creada en el constructor
 	}
 
-	public function save(  $idReloj,$nombreReloj, $modeloReloj, $idTipoReloj, $precioReloj) {
+	public function save(  $nombreReloj, $modeloReloj, $idTipoReloj, $precioReloj) {
 		
 		try {
-			/*
-				$sql = "INSERT INTO {$this->table_name} VALUES ({$idReloj},{$nombreReloj} , {$modeloReloj}, {$idTipoReloj}, {$precioReloj});";
+			
+				$sql = 'INSERT INTO `'.$this->table_name.'` SET  `nombreReloj` = :nombreReloj, `modeloReloj` = :modeloReloj, `tipoReloj` = :tipoReloj, `precioReloj` = :precioReloj';
 
 				$stmt = $this->pdo->prepare($sql);
-				$stmt->bindValue(':idReloj', $idReloj,PDO::PARAM_INT);
-				$stmt->bindValue(':nombreReloj', $nombreReloj,PDO::PARAM_STR);
-				$stmt->bindValue(':modeloReloj', $modeloReloj,PDO::PARAM_STR);
-				$stmt->bindValue(':tipoReloj', $idTipoReloj,PDO::PARAM_INT);
-				$stmt->bindValue(':precioReloj', $precioReloj,PDO::PARAM_INT);
-
-				$stmt->execute();*/
-				$sql = 'INSERT INTO `'.$this->table_name.'` SET `idReloj` = :idReloj, `nombreReloj` = :nombreReloj, `modeloReloj` = :modeloReloj, `tipoReloj` = :tipoReloj, `precioReloj` = :precioReloj';
-
-				$stmt = $this->pdo->prepare($sql);
-				$stmt->bindValue(':idReloj', $idReloj,PDO::PARAM_INT);
+			
 				$stmt->bindValue(':nombreReloj', $nombreReloj,PDO::PARAM_STR);
 				$stmt->bindValue(':modeloReloj', $modeloReloj,PDO::PARAM_STR);
 				$stmt->bindValue(':tipoReloj', $idTipoReloj,PDO::PARAM_INT);

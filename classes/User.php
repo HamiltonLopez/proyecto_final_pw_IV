@@ -126,7 +126,7 @@ class User {
                 $sql = "UPDATE {$this->table_name} SET `userPassword` = :userPassword , `userName` = :userName, `userEmail` = :userEmail  WHERE `idUser` = :idUser";
     
                 $stmt = $this->pdo->prepare($sql);
-                $stmt->bindValue(':userPassword', $userPassword,PDO::PARAM_INT);
+                $stmt->bindValue(':userPassword', $userPassword,PDO::PARAM_STR);
                 $stmt->bindValue(':idUser', $idUser,PDO::PARAM_INT);
 				$stmt->bindValue(':userName', $userName,PDO::PARAM_STR);
 				$stmt->bindValue(':userEmail', $userEmail,PDO::PARAM_STR);
