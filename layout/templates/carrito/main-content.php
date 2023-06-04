@@ -30,8 +30,10 @@
           </thead>
           <tbody>
             <?php
+            $total = count($registros);
             if(count($registros) < 1){
             ?>
+            <script>var registro = '<?php echo count($registros); ?>'</script>
               <tr>
                 <td colspan="7">No hay registros</td>
               </tr>
@@ -62,7 +64,15 @@
         <input type="button" class="btn-clean" value="Limpiar Carrito" onClick="limpiar_carrito();">
       </div>
       <div class="col-12 text-center" id="action-button-container">
-        <input type="button" class="btn-clean" value="Continuar" onClick="generar_venta();">
+      
+        <input type="button" class="btn-clean" value="Continuar" onClick="generar_venta(<?php echo $total; ?>);">
       </div>
+      <br>
+      <br>
+      <div class="col-12 text-center" id="promocion">
+      <h5>POR COMPRAS SUPERIORES A $100.000 RECIBE UN DESCUENTO DEL 30%<span class="badge bg-secondary">New</span></h5>
+    
+    </div>
+
     </div>
 </div>

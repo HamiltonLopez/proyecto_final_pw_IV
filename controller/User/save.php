@@ -25,5 +25,6 @@
   }
 
   header('Location: '.$BASE_ROOT_URL_PATH); // Forma de redireccionar hacia la pagina principal (index.php)
+  
   exit;
     

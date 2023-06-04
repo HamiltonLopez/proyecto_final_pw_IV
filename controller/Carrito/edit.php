@@ -16,7 +16,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>Edición y guardado de datos de forma dinámica con Javascript y PHP</title>
+  <title>Edición de carrito</title>
   <link rel="stylesheet" href="<?php echo $BASE_ROOT_URL_PATH.'assets/bootstrap/';?>css/bootstrap.min.css">
   <script src="<?php echo $BASE_ROOT_URL_PATH.'assets/bootstrap/';?>js/bootstrap.min.js"></script>
  <!--<link rel="stylesheet" href="<?php echo $BASE_ROOT_URL_PATH.'assets/';?>css/style.css" />-->
@@ -26,7 +26,7 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-12 text-center">
-        <span class="fw-bolder fs-3">Edición y guardado de datos de forma dinámica con Javascript y PHP</span>
+        <span class="fw-bolder fs-3">Edición y guardado de datos del carrito</span>
       </div>
     </div>
     

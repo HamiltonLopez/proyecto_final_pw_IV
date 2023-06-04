@@ -6,6 +6,7 @@
     $reloj = new Reloj();
 
     $reloj->delete($id);
-
+   
+    
     header('Location: '.'../../index.php'); // Forma de redireccionar hacia la pagina principal (index.php)
     exit;

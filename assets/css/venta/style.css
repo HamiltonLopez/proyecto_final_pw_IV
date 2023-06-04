@@ -56,19 +56,26 @@ div.col{
     display: flex;
     justify-content: center;
 }
-.btn-clean{
-
-    
-    background-color: rgb(5, 139, 14);
+.button{
+    background-color: rgba(128, 128, 128, 0.283);
     color: white;
+    margin-top: 2%;
     width: 200px;
- height: 50px;
+    height: 30px;
+    border: 2px solid rgb(255, 187, 0);
     border-radius: 15px;
-  
 }
-.btn-clean:hover{
-    background-color: rgba(5, 139, 14, 0.635);
+.button:hover{
+    background-color: green;
+    border: 2px solid green;
+    color: black;
     transition: 0.5s;
+}
+input[class^="button"] {
+    border-radius: 10px;
+    color: white;
+    width: 100px;
+    height: 50px;
 }
 
 

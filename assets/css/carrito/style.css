@@ -79,4 +79,9 @@ div[class^="table-responsive"]  > table{
     background-color: rgb(255, 255, 255);
     color: aquamarine;
 }
-  
+span,h5{
+    color: white;
+}
+#promocion{
+    padding-top: 3%;
+}
