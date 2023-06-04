@@ -47,7 +47,7 @@ class Carrito {
 		$limitString = $limit==0?'':' LIMIT '.$limit;
 
 		try {
-			$sql = "SELECT ct.idCarrito, rl.nombreReloj, tr.nombreTipo, rl.modeloReloj, ct.cantidadRelojes , rl.precioReloj
+			$sql = "SELECT ct.idCarrito, rl.nombreReloj, tr.nombreTipo, rl.modeloReloj, ct.cantidadRelojes , rl.precioReloj, ct.idReloj
 			FROM {$this->table_name} AS ct 
 			INNER JOIN reloj AS rl ON ct.idReloj = rl.idReloj
 			INNER JOIN tipoReloj AS tr ON rl.tipoReloj = tr.idTipo";

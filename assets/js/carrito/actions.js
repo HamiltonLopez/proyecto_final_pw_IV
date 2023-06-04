@@ -13,4 +13,4 @@ function limpiar_carrito(){
 }
 function generar_venta(){
     location.replace(BASE_ROOT_URL_PATH+'controller/Venta/generacion.php');
-  }
+}
