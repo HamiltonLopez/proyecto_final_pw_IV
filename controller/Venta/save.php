@@ -33,7 +33,7 @@
          $detalle->addProduct($idVenta,$idReloj,$cantidad);
       }
       $venta->calcularTotal($maximo['maximo']);
-     
+      $carrito->clearCar();
 
     }
   
