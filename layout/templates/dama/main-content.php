@@ -19,7 +19,7 @@ $registros = $reloj->getByType(2); ?>
             ?>
             <?php
           
-            $imagen = 'img/relojes/'. $index+1 .'/reloj.png';
+            $imagen = 'img/dama/'. $index+1 .'/reloj.png';
             ?>
     <div class="clock col d-flex justify-content-center">
       <div class="card">

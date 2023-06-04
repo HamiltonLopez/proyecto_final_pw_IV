@@ -63,6 +63,7 @@
 				</div>
 				<div class="group">
 					<input type="submit" class="button" value="Sign Up">
+         
 				</div>
         </form>
 				<div class="hr"></div>
@@ -79,7 +80,7 @@
 <div id="edit-table">
 	<div class="row align-items-center" id="main-content">
       <div class="col-12 text-center">
-        <span class="fw-bolder fs-3">CRUD RELOJ</span>
+        <span class="fw-bolder fs-3">CRUD USUARIOS</span>
       </div>
     </div>
 

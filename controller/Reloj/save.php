@@ -11,13 +11,13 @@
 
     for($i = 0; $i < $num_rows; $i++){   
                   
-      $idReloj = $_POST['ids'][$i];
+      
       $nombreReloj =  $_POST['name'][$i];
       $modeloReloj =  $_POST['modelos'][$i];
       $idTipoReloj =  $_POST['type'][$i];
       $precioReloj =  $_POST['precio'][$i];
 
-      $reloj->save( $idReloj,$nombreReloj, $modeloReloj,  $idTipoReloj, $precioReloj);
+      $reloj->save( $nombreReloj, $modeloReloj,  $idTipoReloj, $precioReloj);
     }
   }
 

@@ -24,14 +24,7 @@ function shows_edit_table(){
     td0.append(input0);
     tr.append(td0);
 
-    let td1 = document.createElement("td");
-    let input1 = document.createElement('input');
-    input1.setAttribute('id','id'+i);
-    input1.setAttribute('name','ids[]');
-    input1.required = true; 
-    td1.append(input1);
-    tr.append(td1);
-
+   
     let td2 = document.createElement("td");
     let select1 = document.createElement('select');
     select1.setAttribute('name','type[]');
@@ -57,6 +50,8 @@ function shows_edit_table(){
 
     let td4 = document.createElement("td");
     let input4 = document.createElement('input');
+    input4.setAttribute('type','number');
+    input4.setAttribute('min','0');
     input4.setAttribute('id','precio'+i);
     input4.setAttribute('name','precio[]');
     td4.append(input4);

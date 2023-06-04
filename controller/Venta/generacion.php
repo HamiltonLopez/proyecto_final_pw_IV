@@ -7,7 +7,10 @@
   $cliente = new Cliente();
   $clientes = $cliente->getAll();
   $fecha_actual = date("d-m-Y h:i:s");
+  
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +28,17 @@
   <link rel="stylesheet" href="../../assets/css/venta/style.css" />
   <link rel="stylesheet" href="../../assets/css/footer/style.css" />
 </head>
+<style>
+  span,h5{
+    color: white;
+}
+input{
+  border: none;
+}
+#promocion{
+    padding-top: 3%;
+}
+</style>
 <body>
   <br>
   <div class="container">
@@ -55,17 +69,18 @@
 
        <span>ELIGE UN CLIENTE :</span>
        <select name="clientes" class="form-select-lg mb-3" aria-label="Default select example">
-       <option value="">Selecciona alguno</option>
+      <!--<option value="">Selecciona alguno</!--option-->
       <?php
       if(count($clientes)<1){
       ?>
         <option value="">No hay clientes</option>
       <?php
-      }else{
-        
+      }else{     
         foreach($clientes as $index => $fila){
       ?>
-        <option name="cliente" value="<?php echo $fila['idCliente']?>"><?php echo $fila['nombreCliente']?> - <?php echo $fila['apellidoCliente']?> - <?php echo $fila['telefonoCliente']?></option>
+
+        <option name="cliente" value="<?php echo $fila['idCliente']?>">Nombre : <?php echo $fila['nombreCliente']?> |Apellido : <?php echo $fila['apellidoCliente']?> | CC : <?php echo $fila['idCliente']?> </option>
+
       <?php
       }
     }
@@ -125,9 +140,15 @@
       </div>    
       
     </div>
-    <div class="col-12 text-center" id="action-button-container">
+
+    <div class="text-center" id="action-button-container" id= "content">
         <input type="submit" class="button" value="GENERAR VENTA" >
+
       </div>
+      <div class="col-12 text-center" id="promocion">
+      <h5>POR COMPRAS SUPERIORES A $100.000 RECIBE UN DESCUENTO DEL 30%<span class="badge bg-secondary">New</span></h5>
+    
+    </div>
     </form>
    
 </div>

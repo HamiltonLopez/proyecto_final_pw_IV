@@ -26,9 +26,7 @@
   <br>
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-12 text-center">
-        <span class="fw-bolder fs-3">Edición y guardado de datos de forma dinámica con Javascript y PHP</span>
-      </div>
+    
     </div>
     
     <div class="row">
@@ -37,7 +35,7 @@
 
     <div class="row align-items-center">
       <div class="col-12 text-center">
-        <span class="fw-bolder fs-4">Datos de la persona.</span>
+        <span class="fw-bolder fs-4">Edición y guardado de datos de reloj.</span>
       </div>
     </div>
 
