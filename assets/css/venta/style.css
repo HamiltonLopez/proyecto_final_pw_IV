@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 #edit-table {
     background-color: rgb(226, 220, 200);
-    color: black;
-}
-#edit-table tbody tr:hover {
-    background-color: rgba(100, 96, 82, 0.514);
     color: black;
 }
 #edit-table td,th {
@@ -15,13 +18,19 @@
 }
 
 #main-content{
-   /* background-color: rgba(128, 128, 128, 0.224);*/
+    background-color: rgba(128, 128, 128, 0.224);
    border-radius: 5%;
    margin-top: 5%;
    padding-top: 2%;
    
 }
+body{
+    background-color: rgb(0, 0, 0);
+}
 label{
+    color: white;
+}
+span{
     color: white;
 }
 .button-delete{
@@ -43,25 +52,24 @@ div.col{
     display: flex;
     justify-content: center;
 }
+.btn-clean{
+
+    
+    background-color: rgb(5, 139, 14);
+    color: white;
+    width: 200px;
+ height: 50px;
+    border-radius: 15px;
+  
+}
+.btn-clean:hover{
+    background-color: rgba(5, 139, 14, 0.635);
+    transition: 0.5s;
+}
+
 
 div[class^="table-responsive"]  > table{
     background-color: rgb(255, 255, 255);
     color: aquamarine;
 }
-.btn-save{
-    background-color: rgba(128, 128, 128, 0.283);
-    color: white;
-    margin-top: 2%;
-    width: 200px;
-    height: 30px;
-    border: 2px solid rgb(255, 187, 0);
-    border-radius: 15px;
-}
-.btn-save:hover{
-    background-color: green;
-    border: 2px solid green;
-    color: black;
-    transition: 0.5s;
-}
-
   
