@@ -10,44 +10,18 @@
     $datos = $venta->getById($id);
     $datosReloj = $detalle->getRelojById($id);
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  <title>Factura</title>
-  <link rel="stylesheet" href="<?php echo $BASE_ROOT_URL_PATH.'assets/bootstrap/';?>css/bootstrap.min.css">
-  <script src="<?php echo $BASE_ROOT_URL_PATH.'assets/bootstrap/';?>js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="<?php echo $BASE_ROOT_URL_PATH.'assets/';?>css/style.css" />
-</head>
-<body>
-  <br>
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-12 text-center">
-        <span class="fw-bolder fs-3">Factura</span>
+
+<div id="modal-factura" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Factura</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </div>
-    
-    <div class="row">
-      <div class="span12">&nbsp;</div>
-    </div>
-
-    <div class="row align-items-center">
-      <div class="col-12 text-center">
-        <span class="fw-bolder fs-4">Datos de la venta</span>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="span12">&nbsp;</div>
-    </div>
-
-    <div class="row g-3 align-items-center">
+      <div class="modal-body">
+      <div class="row g-3 align-items-center">
       <input type="hidden" name="id" value="<?php echo $datos['idVenta'];?>">
       <div class="px-4 py-2 row">
         <label for="estadoVenta" class="col-6 col-form-label fw-bolder">Estado</label>
@@ -98,12 +72,10 @@
         </div>
       </div>
     </div>
-
-    <br><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
-</body>
-</html>
-
-<?php
-    //header('Location: '.$BASE_ROOT_URL_PATH); // Forma de redireccionar hacia la pagina principal (index.php)
-    //exit;
+</div>

@@ -33,7 +33,7 @@ class Venta {
 				`nombreEmpresa` = :nombreEmpresa, `telefonoEmpresa` = :telefonoEmpresa, `idCliente` = :idCliente, 
                 `fechaRealizacionVenta` = :fechaRealizacionVenta, `totalVenta` = :totalVenta;';
 
-                $totalVenta = 0.0;
+                $totalVenta = 0;
 
 				$stmt = $this->pdo->prepare($sql);
 				$stmt->bindValue(':estadoVenta', 'generada',PDO::PARAM_STR);
@@ -87,27 +87,55 @@ class Venta {
 
 		return $result;
 	}
-
-	public function calcularTotal($idVenta) {		
-		/*
-		$totalVenta = 0.0;
+	public function getID($orderByDesc = true) {		
+		$result = array();
+		$maximo = 0;
+		//$orderBy = $orderByDesc?'DESC':'ASC';
 
 		try {
-			$sql = " SELECT SUM(rl.precio) AS totalVenta FROM {detalleVenta} dv JOIN {reloj} rl ON dv.idReloj = rl.idReloj 
-			WHERE dv.idVenta = :idVenta";
+			$sql = " SELECT MAX(idVenta) as maximo
+			FROM {$this->table_name}  ";
 			$stmt = $this->pdo->prepare($sql);
-			$stmt->bindValue(':idVenta', $idVenta, PDO::PARAM_INT);
-			$totalVenta = SUM(rl.precio);
+			$stmt->execute();
+		//	$maximo = maximo;
+		  
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			var_dump($result);
+		}
+		catch(PDOException $e) {
+			throw new Exception("Error trying to get records from {$this->table_name} table: ".$e->getMessage());
+		}
+		return $result;
 
-			$sql = " UPDATE {$this->table_name} SET totalVenta = :totalVenta WHERE idVenta = :idVenta";
-			$stmt->bindValue(':totalVenta', $totalVenta, PDO::PARAM_INT);
+		
+	}
+
+	public function calcularTotal($idVenta) {		
+		
+
+		$result = array();
+
+		try {
+			$sql = "SELECT SUM(rl.precioReloj * dv.cantidadRelojes) AS totalVenta FROM detalleVenta AS dv 
+			JOIN reloj  AS rl ON dv.idReloj = rl.idReloj WHERE dv.idVenta = :idVenta";
+			$stmt = $this->pdo->prepare($sql);
+			$stmt->bindValue(':idVenta', $idVenta, PDO::PARAM_INT);		
+			$stmt->execute();
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			
+		
+		   $result = $result['totalVenta'];
+			var_dump($result);
+
+			$sql = "UPDATE {$this->table_name} SET totalVenta = :totalVenta WHERE idVenta = :idVenta";
+			$stmt = $this->pdo->prepare($sql);
+			$stmt->bindValue(':totalVenta', $result, PDO::PARAM_INT);
 			$stmt->bindValue(':idVenta', $idVenta, PDO::PARAM_INT);
 			$stmt->execute();
 		}
 		catch(PDOException $e) {
 			throw new Exception("Error trying to get records from {detalleVenta} table: ".$e->getMessage());
 		}
-*/
 	}
 
 	public function anularVenta($idVenta) {

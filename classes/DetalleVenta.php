@@ -41,6 +41,7 @@ class DetalleVenta {
 		}
 	}
 
+<<<<<<< HEAD
     public function getRelojById($id){
         try {
             $sql = "SELECT reloj.nombreReloj, cantidadRelojes, FROM {$this->table_name} 
@@ -56,6 +57,24 @@ class DetalleVenta {
         }
 
         return $result;
+=======
+    public function getProducts($idVenta) {
+        
+        $result = array();
+
+		try {
+			$sql = " SELECT idReloj, cantidadRelojes FROM {$this->table_name} WHERE idVenta = :idVenta";
+			$stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(':idVenta', $idVenta,PDO::PARAM_INT);
+			$stmt->execute();
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $e) {
+			throw new Exception("Error trying to get records from {$this->table_name} table: ".$e->getMessage());
+		}
+
+		return $result;
+>>>>>>> d672ccc02238b3248b220fba76794710de0fd294
     }
 }
 ?>
