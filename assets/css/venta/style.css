@@ -24,6 +24,10 @@
    padding-top: 2%;
    
 }
+#empresa, #telefono, #fecha{
+    background-color: black;
+    color: white;
+}
 body{
     background-color: rgb(0, 0, 0);
 }

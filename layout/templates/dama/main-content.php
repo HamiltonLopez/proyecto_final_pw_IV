@@ -10,7 +10,7 @@ $registros = $reloj->getByType(2); ?>
     <?php
               if(count($registros) < 1){
             ?>
-            <h1>No hay relojes</h1>
+            <h3>No hay relojes</h3>
 
     <?php
               } else {
