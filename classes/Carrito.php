@@ -40,11 +40,10 @@ class Carrito {
 		}
 	}
 
-    public function getAll($orderByDesc = true, $limit = 0) {		
+    public function getAll() {		
 		
 		$result = array();
-		$orderBy = $orderByDesc?'DESC':'ASC';
-		$limitString = $limit==0?'':' LIMIT '.$limit;
+		
 
 		try {
 			$sql = "SELECT ct.idCarrito, rl.nombreReloj, tr.nombreTipo, rl.modeloReloj, ct.cantidadRelojes , rl.precioReloj, ct.idReloj
