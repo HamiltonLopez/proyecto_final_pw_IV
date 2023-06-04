@@ -33,7 +33,7 @@ class Cliente {
 
 		try {
 			$sql = " SELECT idCliente, nombreCliente, apellidoCliente, tipoDocumento, documentoCliente, 
-            direccionCliente, telefonoCliente FROM {$this->table_name}";
+            direccionCliente, telefonoCliente, emailCliente FROM {$this->table_name}";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
