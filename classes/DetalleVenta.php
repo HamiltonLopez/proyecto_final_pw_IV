@@ -40,5 +40,25 @@ class DetalleVenta {
 			throw new Exception("Error trying to add record to {$this->table_name} table: ".$e->getMessage());
 		}
 	}
+
+    public function getProducts($idVenta) {
+        
+        $result = array();
+
+		try {
+			$sql = " SELECT dt.idVenta, rl.nombreReloj, tr.nombreTipo, rl.modeloReloj, dt.cantidadRelojes, rl.precioReloj FROM {$this->table_name} AS dt
+			JOIN reloj AS rl ON dt.idReloj = rl.idReloj
+			JOIN tipoReloj AS tr ON rl.tipoReloj = tr.idTipo WHERE dt.idVenta = :idVenta";
+			$stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(':idVenta', $idVenta,PDO::PARAM_INT);
+			$stmt->execute();
+			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $e) {
+			throw new Exception("Error trying to get records from {$this->table_name} table: ".$e->getMessage());
+		}
+
+		return $result;
+    }
 }
 ?>

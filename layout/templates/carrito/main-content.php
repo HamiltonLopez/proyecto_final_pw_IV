@@ -26,6 +26,7 @@
             <th>Tipo Reloj</th>
             <th>Modelo Reloj</th>
             <th>Cantidad</th>
+            <th>Precio Unitario</th>
             <th>Acción</th>
           </thead>
           <tbody>
@@ -48,6 +49,7 @@
                   <td><?php echo $fila['nombreTipo']?></td>
                   <td><?php echo $fila['modeloReloj']?></td>
                   <td><?php echo $fila['cantidadRelojes']?></td>
+                  <td><?php echo $fila['precioReloj']?></td>
                   <td>
                       <input type="button" class="button-delete" value="Borrar" onClick="borrar_registro(<?php echo $fila['idCarrito']; ?>);">
                       <input type="button" class="button-edit" value="Editar" onClick="editar_registro(<?php echo $fila['idCarrito']; ?>);">
@@ -64,8 +66,10 @@
         <input type="button" class="btn-clean" value="Limpiar Carrito" onClick="limpiar_carrito();">
       </div>
       <div class="col-12 text-center" id="action-button-container">
+
       
         <input type="button" class="btn-clean" value="Continuar" onClick="generar_venta(<?php echo $total; ?>);">
+
       </div>
       <br>
       <br>

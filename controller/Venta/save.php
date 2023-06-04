@@ -36,9 +36,11 @@ if (!empty($_POST['empresa'])) {
   $venta->calcularTotal($maximo['maximo']);
   $carrito->clearCar();
   
+
     sleep(3);
     header('Location: ' . $BASE_ROOT_URL_PATH); // Forma de redireccionar hacia la pagina principal (index.php)
     exit;
   }
+
 
 

@@ -78,7 +78,9 @@ input{
       }else{     
         foreach($clientes as $index => $fila){
       ?>
+
         <option name="cliente" value="<?php echo $fila['idCliente']?>">Nombre : <?php echo $fila['nombreCliente']?> |Apellido : <?php echo $fila['apellidoCliente']?> | CC : <?php echo $fila['idCliente']?> </option>
+
       <?php
       }
     }
@@ -138,8 +140,10 @@ input{
       </div>    
       
     </div>
+
     <div class="text-center" id="action-button-container" id= "content">
-        <input type="submit" class="button" value="GENERAR" >
+        <input type="submit" class="button" value="GENERAR VENTA" >
+
       </div>
       <div class="col-12 text-center" id="promocion">
       <h5>POR COMPRAS SUPERIORES A $100.000 RECIBE UN DESCUENTO DEL 30%<span class="badge bg-secondary">New</span></h5>

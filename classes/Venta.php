@@ -79,8 +79,9 @@ class Venta
 		$orderBy = $orderByDesc ? 'DESC' : 'ASC';
 
 		try {
-			$sql = " SELECT idVenta, estadoVenta, nombreEmpresa, telefonoEmpresa, idCliente, fechaRealizacionVenta, 
-			totalVenta FROM {$this->table_name} ORDER BY {$orderBy}";
+			$sql = " SELECT idVenta, estadoVenta, nombreEmpresa, telefonoEmpresa, cl.nombreCliente, cl.apellidoCliente,
+			fechaRealizacionVenta, totalVenta FROM {$this->table_name} AS vt 
+			JOIN cliente cl ON vt.idCliente = cl.idCliente";
 			$stmt = $this->pdo->prepare($sql);
 			$stmt->execute();
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);

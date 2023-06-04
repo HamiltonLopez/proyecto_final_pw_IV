@@ -84,6 +84,10 @@
                     <a class="nav-link<?php echo $menu['active_carrito']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=carrito'?>" href="#"><i class="bi bi-cart3"></i></a>
                     
                   </li>
+                  <li class="nav-item col">
+                    <a class="nav-link<?php echo $menu['active_ventas']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=ventas'?>" href="#">Ventas</a>
+                    
+                  </li>
                   
 
                  
