@@ -7,3 +7,4 @@ function borrar_registro(id){
   function editar_registro(id){
     location.replace(BASE_ROOT_URL_PATH+'controller/Reloj/edit.php?id='+id);
   }
+

@@ -15,6 +15,7 @@
     <div class="row">
       <div class="span12">&nbsp;</div>
     </div>
+    
 
     <div class="row align-items-center" id="show-content">
       <div class="table-responsive">
@@ -25,6 +26,7 @@
             <th>Tipo Reloj</th>
             <th>Modelo Reloj</th>
             <th>Cantidad</th>
+            <th>Precio Unitario</th>
             <th>Acción</th>
           </thead>
           <tbody>
@@ -45,6 +47,7 @@
                   <td><?php echo $fila['nombreTipo']?></td>
                   <td><?php echo $fila['modeloReloj']?></td>
                   <td><?php echo $fila['cantidadRelojes']?></td>
+                  <td><?php echo $fila['precioReloj']?></td>
                   <td>
                       <input type="button" class="button-delete" value="Borrar" onClick="borrar_registro(<?php echo $fila['idCarrito']; ?>);">
                       <input type="button" class="button-edit" value="Editar" onClick="editar_registro(<?php echo $fila['idCarrito']; ?>);">
@@ -59,6 +62,9 @@
       </div>    
       <div class="col-12 text-center" id="action-button-container">
         <input type="button" class="btn-clean" value="Limpiar Carrito" onClick="limpiar_carrito();">
+      </div>
+      <div class="col-12 text-center" id="action-button-container">
+        <input type="button" class="btn-clean" value="Relizar Venta" onClick="generar_venta();">
       </div>
     </div>
 </div>

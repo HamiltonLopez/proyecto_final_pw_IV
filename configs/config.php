@@ -11,9 +11,7 @@
         'active_about' => false,
         'active_login' => false,
         'active_carrito' => false,
-        'active_module6' => false,
-        'active_module7' => false,
-        'active_module8' => false,
+        'active_ventas' => false,
     ];
 
     $module_title = [
@@ -24,9 +22,7 @@
         'about' => 'About!',
         'login' => 'Login!',
         'carrito' => 'Carrito!',
-        'module6' => 'Module 6!',
-        'module7' => 'Module 7!',
-        'module8' => 'Module 8!',
+        'ventas' => 'Ventas!'
     ];
 
     session_start();

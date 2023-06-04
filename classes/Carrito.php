@@ -24,7 +24,7 @@ class Carrito {
 		$this->pdo = null; //Se destruye la conexíon a la base de datos creada en el constructor
 	}
 
-    public function addProduct($idReloj, $cantidadRelojes) {
+    public function addProduct($idReloj, $cantidadRelojes, ) {
 		
 		try {
 				$sql = 'INSERT INTO `'.$this->table_name.'` SET `idReloj` = :idReloj, `cantidadRelojes` = :cantidadRelojes;';
@@ -47,7 +47,7 @@ class Carrito {
 		$limitString = $limit==0?'':' LIMIT '.$limit;
 
 		try {
-			$sql = "SELECT ct.idCarrito, rl.nombreReloj, tr.nombreTipo, rl.modeloReloj, ct.cantidadRelojes 
+			$sql = "SELECT ct.idCarrito, rl.nombreReloj, tr.nombreTipo, rl.modeloReloj, ct.cantidadRelojes , rl.precioReloj, ct.idReloj
 			FROM {$this->table_name} AS ct 
 			INNER JOIN reloj AS rl ON ct.idReloj = rl.idReloj
 			INNER JOIN tipoReloj AS tr ON rl.tipoReloj = tr.idTipo";
@@ -127,5 +127,25 @@ class Carrito {
             throw new Exception("Error trying to delete {$this->table_name} table. ".$e->getMessage());
           }
     }
+	/*public function calcularTotal() {
+		//SELECT SUM(ct.salarioEmp) AS 'Suma Salario Empleados'
+//FROM empleado em JOIN categoria ct ON em.codCategoriaEmp=ct.codCategoria;
+$totalVenta = 0.0;
+		 try {
+			$sql = "SELECT SUM(re.precioReloj)
+			FROM {$this->table_name} AS ct
+			INNER JOIN reloj AS re ON ct.idReloj = re.idReloj
+			INNER JOIN tipoReloj AS tr ON re.tipoReloj = tr.idTipo";
+
+				$stmt = $this->pdo->prepare($sql);
+				$stmt->execute();
+				$totalVenta = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				return $totalVenta;
+
+        }
+        catch(PDOException $e) {
+            throw new Exception("Error trying to delete {$this->table_name} table. ".$e->getMessage());
+          }
+	}*/
 
 }

@@ -11,3 +11,6 @@ function editar_registro(idCarrito){
 function limpiar_carrito(){
     location.replace(BASE_ROOT_URL_PATH+'controller/Carrito/clearCar.php');
 }
+function generar_venta(){
+    location.replace(BASE_ROOT_URL_PATH+'controller/Venta/generacion.php');
+}
