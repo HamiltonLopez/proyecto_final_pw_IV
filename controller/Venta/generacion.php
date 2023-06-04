@@ -1,10 +1,11 @@
 <?php
   require_once ('../../configs/database.php');
   require_once('../../classes/Carrito.php');
+  require_once('../../classes/Cliente.php');
   $carrito = new Carrito();
   $registros = $carrito->getAll(); //obtenemos todos los registros de la tabla
-  //$cliente = new Cliente();
-  //clientes = $cliente->getAll();
+  $cliente = new Cliente();
+  $clientes = $cliente->getAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +16,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>Edicion del usuario</title>
+  <title>Generación de compra</title>
 
   <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
   <script src="<?php echo $BASE_ROOT_URL_PATH.'assets/bootstrap/';?>js/bootstrap.min.js"></script>
@@ -26,7 +27,7 @@
   <div class="container">
   <div class="row align-items-center">
       <div class="col-12 text-center">
-        <span class="fw-bolder fs-3 text-center">CARRITO DE COMPRAS</span>
+        <span class="fw-bolder fs-3 text-center">CLIENTES :</span>
       </div>
     </div>
     <div class="row">
@@ -34,14 +35,16 @@
     </div>
 
     <div class="row align-items-center" >
-       <label for="clientes">Elige el cliente : </label>
-       <select name="clientes" id="">
+       <span>ELIGE UN CLIENTE :</span>
+       <select name="clientes" class="form-select-lg mb-3" aria-label="Default select example">
+       <option value="">Selecciona alguno</option>
       <?php
       if(count($clientes)<1){
       ?>
         <option value="">No hay clientes</option>
       <?php
       }else{
+        
         foreach($clientes as $index => $fila){
       ?>
         <option value="<?php echo $fila['idCliente']?>"><?php echo $fila['nombreCliente']?> : CC : <?php echo $fila['idCliente']?> </option>
@@ -58,7 +61,7 @@
 
     <div class="row align-items-center">
       <div class="col-12 text-center">
-        <span class="fw-bolder fs-3 text-center">PRODUCTOS</span>
+        <span class="fw-bolder fs-3 text-center">LISTA DE COMPRA</span>
       </div>
     </div>
 
@@ -107,9 +110,10 @@
         </table>
       </div>    
       <div class="col-12 text-center" id="action-button-container">
-        <input type="button" class="btn-clean" value="Limpiar Carrito" onClick="limpiar_carrito();">
+        <input type="button" class="btn-clean" value="GENERAR" onClick="limpiar_carrito();">
       </div>
     </div>
+   
 </div>
 </body>
 </html>

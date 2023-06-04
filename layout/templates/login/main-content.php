@@ -96,7 +96,7 @@
           <span class="fs-4">Tabla de presentación de datos</span>
       </div>
       <div class="table-responsive " id="main-content">
-        <table class="table table-bordered align-middle" id="edit-table">
+        <table class="table table-bordered align-middle" id="data-table">
           <thead class="table-light">
        
                 <th>ID</th>

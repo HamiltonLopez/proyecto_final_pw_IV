@@ -127,5 +127,25 @@ class Carrito {
             throw new Exception("Error trying to delete {$this->table_name} table. ".$e->getMessage());
           }
     }
+	/*public function calcularTotal() {
+		//SELECT SUM(ct.salarioEmp) AS 'Suma Salario Empleados'
+//FROM empleado em JOIN categoria ct ON em.codCategoriaEmp=ct.codCategoria;
+$totalVenta = 0.0;
+		 try {
+			$sql = "SELECT SUM(re.precioReloj)
+			FROM {$this->table_name} AS ct
+			INNER JOIN reloj AS re ON ct.idReloj = re.idReloj
+			INNER JOIN tipoReloj AS tr ON re.tipoReloj = tr.idTipo";
+
+				$stmt = $this->pdo->prepare($sql);
+				$stmt->execute();
+				$totalVenta = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				return $totalVenta;
+
+        }
+        catch(PDOException $e) {
+            throw new Exception("Error trying to delete {$this->table_name} table. ".$e->getMessage());
+          }
+	}*/
 
 }
