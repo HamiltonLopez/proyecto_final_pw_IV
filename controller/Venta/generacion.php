@@ -65,7 +65,7 @@
         
         foreach($clientes as $index => $fila){
       ?>
-        <option name="cliente" value="<?php echo $fila['idCliente']?>"><?php echo $fila['nombreCliente']?> : CC : <?php echo $fila['idCliente']?> </option>
+        <option name="cliente" value="<?php echo $fila['idCliente']?>"><?php echo $fila['nombreCliente']?> - <?php echo $fila['apellidoCliente']?> - <?php echo $fila['telefonoCliente']?></option>
       <?php
       }
     }
@@ -126,7 +126,7 @@
       
     </div>
     <div class="col-12 text-center" id="action-button-container">
-        <input type="submit" class="button" value="GENERAR" >
+        <input type="submit" class="button" value="GENERAR VENTA" >
       </div>
     </form>
    

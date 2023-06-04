@@ -64,7 +64,7 @@
         <input type="button" class="btn-clean" value="Limpiar Carrito" onClick="limpiar_carrito();">
       </div>
       <div class="col-12 text-center" id="action-button-container">
-        <input type="button" class="btn-clean" value="Continuar" onClick="generar_venta();">
+        <input type="button" class="btn-clean" value="Relizar Venta" onClick="generar_venta();">
       </div>
     </div>
 </div>

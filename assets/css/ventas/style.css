@@ -18,7 +18,6 @@
 }
 
 #main-content{
-    background-color: rgba(128, 128, 128, 0.224);
    border-radius: 5%;
    margin-top: 5%;
    padding-top: 2%;
@@ -37,38 +36,22 @@ label{
 span{
     color: white;
 }
-.button{
+.button-show{
     background-color: rgba(255, 0, 0, 0.656);
 }
-.button-edit{
+.button-anular{
     background-color: rgb(8, 108, 133);
     color: white;
-
-
 }
 input[class^="button"] {
     border-radius: 10px;
     color: white;
-    width: 200px;
+    width: 75px;
 
   }
 div.col{
     display: flex;
     justify-content: center;
-}
-.btn-clean{
-
-    
-    background-color: rgb(5, 139, 14);
-    color: white;
-    width: 200px;
- height: 50px;
-    border-radius: 15px;
-  
-}
-.btn-clean:hover{
-    background-color: rgba(5, 139, 14, 0.635);
-    transition: 0.5s;
 }
 
 

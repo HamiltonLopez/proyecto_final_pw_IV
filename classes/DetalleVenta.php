@@ -46,11 +46,13 @@ class DetalleVenta {
         $result = array();
 
 		try {
-			$sql = " SELECT idReloj, cantidadRelojes FROM {$this->table_name} WHERE idVenta = :idVenta";
+			$sql = " SELECT dt.idVenta, rl.nombreReloj, tr.nombreTipo, rl.modeloReloj, dt.cantidadRelojes, rl.precioReloj FROM {$this->table_name} AS dt
+			JOIN reloj AS rl ON dt.idReloj = rl.idReloj
+			JOIN tipoReloj AS tr ON rl.tipoReloj = tr.idTipo WHERE dt.idVenta = :idVenta";
 			$stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':idVenta', $idVenta,PDO::PARAM_INT);
 			$stmt->execute();
-			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		}
 		catch(PDOException $e) {
 			throw new Exception("Error trying to get records from {$this->table_name} table: ".$e->getMessage());
