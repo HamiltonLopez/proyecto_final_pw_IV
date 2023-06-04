@@ -11,27 +11,29 @@
     
     $venta = new Venta();
 
-    
 
-
-    $idVenta= 1;
       $name =  $_POST['empresa'];
       $telefono =  $_POST['telefono'];
       $fecha =  $_POST['fecha'];
       $id =  $_POST['clientes'];
       $venta->crearVenta($name,$telefono,$id,$fecha);
+      $maximo = $venta->getID();
+      $total = count($maximo);
 
       $carrito = new Carrito();
       $detalle = new DetalleVenta();
       $registros = $carrito->getAll(); 
+      $idVenta=0;
+     
       foreach($registros as $fila){
-         $idVenta= 1;
+         $idVenta= $maximo['maximo'];
          $idReloj = $fila['idReloj'];
          $cantidad = $fila['cantidadRelojes'];
 
          $detalle->addProduct($idVenta,$idReloj,$cantidad);
       }
-      $idVenta+= 1;
+      $venta->calcularTotal($maximo['maximo']);
+     
 
     }
   

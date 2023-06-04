@@ -108,12 +108,12 @@
                 foreach($registros as $index => $fila) {
             ?>
                 <tr>
-                  <td><?php echo ($index + 1)?></td>
-                  <td><?php echo $fila['nombreReloj']?></td>
-                  <td><?php echo $fila['nombreTipo']?></td>
-                  <td><?php echo $fila['modeloReloj']?></td>
-                  <td><?php echo $fila['cantidadRelojes']?></td>
-                  <td><?php echo $fila['precioReloj']?></td>
+                  <td ><?php echo ($index + 1)?></td>
+                  <td ><?php echo $fila['nombreReloj']?></td>
+                  <td ><?php echo $fila['nombreTipo']?></td>
+                  <td ><?php echo $fila['modeloReloj']?></td>
+                  <td ><?php echo $fila['cantidadRelojes']?></td>
+                  <td ><?php echo $fila['precioReloj']?></td>
                   
                 </tr>
             <?php
