@@ -146,7 +146,7 @@ input{
 
       </div>
       <div class="col-12 text-center" id="promocion">
-      <h5>POR COMPRAS SUPERIORES A $100.000 RECIBE UN DESCUENTO DEL 30%<span class="badge bg-secondary">New</span></h5>
+      <h5>POR COMPRAS SUPERIORES A $1'000.000 RECIBE UN DESCUENTO DEL 30%<span class="badge bg-secondary">New</span></h5>
     
     </div>
     </form>
