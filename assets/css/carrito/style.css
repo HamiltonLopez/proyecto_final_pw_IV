@@ -1,0 +1,87 @@
+#edit-table {
+    background-color: rgb(226, 220, 200);
+    color: black;
+}
+#edit-table tbody tr:hover {
+    background-color: rgba(100, 96, 82, 0.514);
+    color: black;
+}
+#edit-table td,th {
+    text-align: center;
+}
+#edit-table th {
+    background-color:rgb(15, 61, 62);
+    color: rgba(255, 255, 255, 0.795);
+}
+
+#main-content{
+    /*background-color: rgba(128, 128, 128, 0.224);*/
+   border-radius: 10px;
+   margin-top: 5%;
+   padding-top: 2%;
+   
+}
+label{
+    color: white;
+}
+.button-delete{
+    background-color: rgba(255, 0, 0, 0.656);
+}
+.button-edit{
+    background-color: rgb(8, 108, 133);
+    color: white;
+
+
+}
+input[class^="button"] {
+    border-radius: 10px;
+    color: white;
+    width: 75px;
+
+  }
+div.col{
+    display: flex;
+    justify-content: center;
+}
+/*.btn-clean{
+
+    
+    background-color: rgb(226, 220, 200);
+    color: white;
+    width: 200px;
+ height: 30px;
+    border-radius: 15px;
+  
+}
+.btn-clean:hover{
+    background-color: rgba(5, 139, 14, 0.635);
+    transition: 0.5s;
+}*/
+.btn-clean{
+    background-color: rgba(128, 128, 128, 0.283);
+    color: white;
+    margin-top: 2%;
+    width: 200px;
+    height: 30px;
+    border: 2px solid rgb(255, 187, 0);
+    border-radius: 15px;
+}
+.btn-clean:hover{
+    background-color: green;
+    border: 2px solid green;
+    color: black;
+    transition: 0.5s;
+}
+
+
+
+div[class^="table-responsive"]  > table{
+    background-color: rgb(255, 255, 255);
+    color: aquamarine;
+}
+span,h5{
+    color: white;
+}
+#promocion{
+    padding-top: 3%;
+}

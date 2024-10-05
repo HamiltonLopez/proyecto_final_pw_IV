@@ -4,8 +4,6 @@
 
 
 
-
-
 h1 {
     color: #ffffff;
     font-weight: bold;
@@ -17,6 +15,8 @@ h1 {
 
 .cont p{
     color: #ffffff;
+    padding-top: 5%;
+    text-align: justify;
 }
 
 

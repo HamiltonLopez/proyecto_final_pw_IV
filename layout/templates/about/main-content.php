@@ -2,10 +2,10 @@
   <div class="container">
     <div class="about row">
       <div class="tit col-12">
-        <h1>ABOUT US</h1>
+        <h1>¿Quienes somos?</h1>
       </div>
       <div class="info-about row">
-        <div class="cont col-6">
+        <div class="cont col">
           <p>
             ¡Bienvenido a nuestra tienda de venta de relojes! Aquí en Tempus
             Fugit, nos apasiona el mundo de los relojes y nos enorgullece
@@ -22,10 +22,6 @@
             especial, un reloj deportivo resistente para tus aventuras al aire
             libre o un reloj inteligente con las últimas características
             tecnológicas, tenemos opciones para todos los gustos y necesidades.
-          </p>
-        </div>
-        <div class="cont col-6">
-          <p>
             Nuestro equipo de expertos en relojes está aquí para asesorarte y
             brindarte el mejor servicio posible. Estamos comprometidos en
             ayudarte a encontrar el reloj perfecto que refleje tu estilo
@@ -45,6 +41,7 @@
             se convertirá en una pieza atemporal en tu colección..
           </p>
         </div>
+        
       </div>
     </div>
   </div>

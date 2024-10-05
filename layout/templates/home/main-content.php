@@ -1,6 +1,6 @@
-<div class="container">
+<div class="home-content container">
 <main>
-        <div class="row">
+        <div class="home-row row">
           <div class="video col-6">
             <img src="img/tomando-reloj-removebg-preview.png" alt="" />
           </div>

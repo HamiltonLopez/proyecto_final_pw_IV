@@ -10,23 +10,19 @@
         'active_producto' => false,
         'active_about' => false,
         'active_login' => false,
-        'active_module5' => false,
-        'active_module6' => false,
-        'active_module7' => false,
-        'active_module8' => false,
+        'active_carrito' => false,
+        'active_ventas' => false,
     ];
 
     $module_title = [
         'home' => 'Home!',
         'caballero' => 'Caballero!',
         'dama' => 'Dama!',
-        'producto' => 'producto!',
+        'producto' => 'Producto!',
         'about' => 'About!',
         'login' => 'Login!',
-        'module5' => 'Module 5!',
-        'module6' => 'Module 6!',
-        'module7' => 'Module 7!',
-        'module8' => 'Module 8!',
+        'carrito' => 'Carrito!',
+        'ventas' => 'Ventas!'
     ];
 
     session_start();
