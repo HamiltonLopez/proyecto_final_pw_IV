@@ -32,8 +32,9 @@
         $_SESSION['module_title'] = $module_title[$_SESSION['module_name']];
     }
     
-    $BASE_ROOT_FOLDER_PATH = 'C:/xampp/htdocs/tempus_fugit/';;
-    $BASE_ROOT_URL_PATH = 'http://localhost/tempus_fugit/';
+    // config.php o el archivo que mostraste
+    $BASE_ROOT_FOLDER_PATH = '/var/www/html/';          // Ruta interna del contenedor
+    $BASE_ROOT_URL_PATH    = 'http://localhost:8080/';   // URL pública
 
     $menu['active_'.$_SESSION['module_name']] = true;
 ?>
