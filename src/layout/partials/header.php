@@ -79,13 +79,13 @@
                     <a class="nav-link<?php echo $menu['active_carrito']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=carrito'?>" href="#"><i class="bi bi-cart3"></i></a>
                     
                   </li>
-                  <!--li class="nav-item col">
+                  <li class="nav-item col">
                     <a class="nav-link<?php echo $menu['active_producto']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=producto'?>" href="#">Productos</a>
-                  </!--li>
-                  <li-- class="nav-item col">
+                  </li>
+                  <li class="nav-item col">
                     <a class="nav-link<?php echo $menu['active_ventas']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=ventas'?>" href="#">Ventas</a>
                     
-                  </li-->
+                  </li>
                   <li class="nav-item col">
                     <a class="nav-link<?php echo $menu['active_login']?' active':''?>" aria-current="page" href="<?php echo $BASE_ROOT_URL_PATH.'routes/controller.php?active_module=login'?>" href="#">Login <i class="bi bi-person-dash"></i></a>
                     
