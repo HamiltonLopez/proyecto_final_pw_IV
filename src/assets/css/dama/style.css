@@ -1,0 +1,48 @@
+* {
+  color: white;
+}
+.man {
+  padding-top: 5%;
+  padding-left: 2%;
+}
+.card {
+
+  width: 250px;
+  height: 600px;
+  background-color: rgba(0, 0, 0, 0);
+}
+.card-title {
+  color: rgb(255, 187, 0);
+  font-weight: bold;
+  text-align: center;
+}
+p{
+  text-align: center;
+}
+
+.clock {
+  padding-bottom: 4%;
+}
+.card-img-top {
+  transition: transform 0.75s, filter 0.75s;
+}
+
+.card:hover .card-img-top {
+  transform: scale(0.8);
+  filter: grayscale(70%);
+}
+.text{
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 5%;
+
+}
+.btn{
+    background-color: rgba(128, 128, 128, 0.283);
+    margin-top: 2%;
+    border: 2px solid rgb(255, 187, 0);
+}
+.btn:hover{
+    background-color: green;
+    border: 2px solid green;
+    transition: 0.5s;
+}
