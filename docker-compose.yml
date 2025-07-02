@@ -7,12 +7,11 @@ services:
       dockerfile: Dockerfile
     container_name: tempus_app
     volumes:
-      - ./:/var/www/html         # monta tu código dentro del contenedor
+      - ./src:/var/www/html        # monta tu código dentro del contenedor
       - ./php.ini:/usr/local/etc/php/conf.d/40-custom.ini   # Opcional
     ports:
       - "8080:80"                    
     environment:
-      APACHE_DOCUMENT_ROOT: /var/www/html
       DB_HOST: db
       DB_NAME: ${MYSQL_DATABASE}
       DB_USER: ${MYSQL_USER}
