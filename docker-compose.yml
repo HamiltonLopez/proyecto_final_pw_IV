@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  app:
+    build:                
+      context: .
+      dockerfile: Dockerfile
+    container_name: tempus_app
+    volumes:
+      - ./src:/var/www/html        # monta tu código dentro del contenedor
+      - ./php.ini:/usr/local/etc/php/conf.d/40-custom.ini   # Opcional
+    ports:
+      - "8080:80"                    
+    environment:
+      DB_HOST: db
+      DB_NAME: ${MYSQL_DATABASE}
+      DB_USER: ${MYSQL_USER}
+      DB_PWD:  ${MYSQL_PASSWORD}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.3                 # servidor MySQL
+    container_name: tempus_db
+    restart: unless-stopped
+    env_file: .env                   # guarda las variables sensibles aquí
+    ports:
+      - "3307:3306"  # esto expone el puerto
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./src/database:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: pma
+    ports:
+      - "8081:80"                    # http://localhost:8081
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+volumes:
+  db_data:
